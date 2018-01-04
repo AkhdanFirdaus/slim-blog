@@ -1,0 +1,53 @@
+[33mcommit ccf7b3bc7736c7eea6823ab758694c8d9fea0aab[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 23:34:42 2018 +0700
+
+    fix semua error
+
+[33mcommit d0ced5499b9d514d8dd65814800c98ad1e150fe8[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 23:27:02 2018 +0700
+
+    penambahan view
+
+[33mcommit 57ee0b22d8fc77f9861226c6fe04035dd356c76a[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 23:09:08 2018 +0700
+
+    mengatur routes
+
+[33mcommit d3d0fd8a41e212b4d95438b2142249045c25335d[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 23:02:21 2018 +0700
+
+    membuat controller
+
+[33mcommit 69581e01273f28fe1140805f52beeaf8e3586346[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 22:33:17 2018 +0700
+
+    memanggil perintah post model factory di DatabaseSeeder
+
+[33mcommit 15c7ad2bb8dbfd919ee1be8e3b06396c66338e3d[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 21:44:45 2018 +0700
+
+    menambahkan Post Model Factory
+
+[33mcommit c20ecf4bb150fd976d0aaa1ab0c79bfc6079b11a[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 20:46:23 2018 +0700
+
+    Post model v1.0
+
+[33mcommit 904a4132b3dd40e68488b1242e7195161f2e52e7[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 20:34:11 2018 +0700
+
+    Membuat model dan migrating database
+
+[33mcommit 3770f6dc12447c7e695273c3b17daab6a5ed7d1f[m
+Author: Akhdan <akhdan.musyaffa.firdaus@gmail.com>
+Date:   Thu Jan 4 20:07:05 2018 +0700
+
+    Instalasi Laravel 5.5

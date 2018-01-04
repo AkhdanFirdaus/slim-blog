@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Carbon\Carbon;
 
 class BlogController extends Controller
 {
@@ -10,7 +12,7 @@ class BlogController extends Controller
     {
     	$posts = Post::where('created_at', '<=', Carbon::now())
 	    	->orderBy('created_at', 'desc')
-	    	->paginate(config('blog.index', compact('posts'));
+	    	->paginate(config('blog.posts_per_page'));
 
 	    return view('blog.index', compact('posts'));
     }

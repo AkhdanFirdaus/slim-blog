@@ -6,7 +6,7 @@
 	<hr>
 
 	<ul>
-		@foreach (posts as $post)
+		@foreach ($posts as $post)
 			<li>
 				<a href="/blog/{{ $post->slug }}">{{ $post->title }}</a>
 				<em>({{ $post->created_at->format('M jS Y g:ia') }})</em>
