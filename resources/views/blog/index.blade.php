@@ -6,7 +6,7 @@
 	<ul>
 		@foreach ($posts as $post)
 		<li>
-			<a href="/lihat/{{$post->id}}">{{ $post->title }}</a>
+			<a href="/blog/lihat/{{$post->id}}">{{ $post->title }}</a>
 			<em>({{ $post->created_at->format('M jS Y g:ia') }})</em>
 			<p>
 				{{ str_limit($post->content) }}

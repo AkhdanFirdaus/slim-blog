@@ -15,8 +15,16 @@ Route::get('/', function () {
     return redirect('/blog');
 });
 
+Route::get('/blog/tulis', function () {
+    return redirect('/blog/tulis');
+});
+
 Route::get('blog', 'BlogController@index');
 
 Route::get('blog/{slug}', 'BlogController@showPost');
 
-Route::get('lihat/{id}', 'BlogController@lihatPost');
+Route::get('blog/lihat/{id}', 'BlogController@lihatPost');
+
+Route::get('blog/tulis', 'BlogController@tulisPost');
+
+Route::post('/tulis/posting', 'BlogController@posting');

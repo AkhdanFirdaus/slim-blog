@@ -17,8 +17,8 @@
 			@yield('content')
 		</div>	
 	</div>	
-	<div class="footer">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, sint.
+	<div class="footer text-center">
+		2018 &copy; AkhdanFirdaus
 	</div>
 </body>
 </html>

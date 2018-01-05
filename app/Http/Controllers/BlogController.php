@@ -30,4 +30,25 @@ class BlogController extends Controller
 
         return view('blog.lihat')->with('posts', $post);
     }
+
+    public function tulisPost()
+    {
+        return view('blog.tulis');
+    }
+
+    public function posting(Request $request)
+    {
+        $this->validate($request, [
+            'Judul' => 'required',
+            'Konten' => 'required'
+        ]);
+
+        $post = new Post;
+        $post->title = $request->input('Judul');
+        $post->content = $request->input('Konten');
+
+        $post->save();
+
+        return redirect('/')->with('success', 'Sukses memposting');
+    }
 }
