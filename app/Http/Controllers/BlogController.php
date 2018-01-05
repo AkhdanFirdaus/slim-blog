@@ -23,4 +23,11 @@ class BlogController extends Controller
 
     	return view('blog.post')->withPost($post);
     }
+
+    public function lihatPost($id)
+    {
+        $post = Post::find($id);
+
+        return view('blog.lihat')->with('posts', $post);
+    }
 }

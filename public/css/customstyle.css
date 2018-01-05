@@ -1,0 +1,27 @@
+body
+{
+	margin: 0;
+	background-color: #F8F9FA;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+.judul
+{
+	padding:20px;
+	background-color: #1EBEA5;
+	color: #fff;
+}
+.wadah
+{
+	padding: 50px;	
+}
+.container
+{
+	background-color: #fff;
+	width: 80%;
+	padding: 50px;
+}
+.footer
+{
+	padding: 20px;
+	background-color: #273443;
+}
