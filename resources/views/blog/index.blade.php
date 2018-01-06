@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')	
+	@include('inc.pesan')
 	<h5>Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</h5>
-	<hr>	
+	<hr>		
 	<ul>
 		@foreach ($posts as $post)
 		<li>

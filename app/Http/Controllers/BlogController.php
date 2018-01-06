@@ -49,6 +49,24 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect('/')->with('success', 'Sukses memposting');
+        return redirect('/blog')->with('success', 'Postingan terkirim');
+    }
+
+    public function mencari(Request $request)
+    {
+        $data = $request->input('pencarian');
+
+        $posts = DB::table('data')
+        ->where('title', 'LIKE', '%' .$data. '%')
+        ->orWhere('content', 'LIKE', '%' .$data. '%')->get();
+
+        if(count ($posts) > 0)
+        {
+            return view('/')->withDetails($base)->withQuery($data);
+        }
+        else
+        {
+            return view('/')->withMessage('data tidak ditemukan');
+        }
     }
 }

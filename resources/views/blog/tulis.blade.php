@@ -6,7 +6,9 @@
 			<h5>Kembali</h5>
 		</div>
 	</a>
-	<h1>Ini halaman tulis</h1>
+	<h1>Ingin menulis sesuatu?</h1>
+
+	@include('inc.pesan')	
 
 	{!! Form::open(['url' => 'tulis/posting']) !!}
 
@@ -22,5 +24,5 @@
 		{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 		{{Form::reset('Reset', ['class' => 'btn btn-danger'])}}
 	</div>
-	{!! Form::close() !!}
+	{!! Form::close() !!}	
 @endsection
