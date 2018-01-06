@@ -2,7 +2,7 @@
 
 @section('content')
 	<a href="/">
-		<div class="beranda">
+		<div>
 			<h5>Kembali</h5>
 		</div>
 	</a>

@@ -22,14 +22,7 @@ class BlogController extends Controller
     	$post = Post::whereSlug($slug)->firstorFail();
 
     	return view('blog.post')->withPost($post);
-    }
-
-    public function lihatPost($id)
-    {
-        $post = Post::find($id);
-
-        return view('blog.lihat')->with('posts', $post);
-    }
+    }    
 
     public function tulisPost()
     {
@@ -50,23 +43,6 @@ class BlogController extends Controller
         $post->save();
 
         return redirect('/blog')->with('success', 'Postingan terkirim');
-    }
+    }    
 
-    public function mencari(Request $request)
-    {
-        $data = $request->input('pencarian');
-
-        $posts = DB::table('data')
-        ->where('title', 'LIKE', '%' .$data. '%')
-        ->orWhere('content', 'LIKE', '%' .$data. '%')->get();
-
-        if(count ($posts) > 0)
-        {
-            return view('/')->withDetails($base)->withQuery($data);
-        }
-        else
-        {
-            return view('/')->withMessage('data tidak ditemukan');
-        }
-    }
 }
