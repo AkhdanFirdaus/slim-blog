@@ -1,5 +1,5 @@
 <div id="app">
-    <nav class="navbar-default" role="navigation">
+    <nav class="navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -22,6 +22,7 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>                    
                         <ul class="dropdown-menu">
+                            <li><a href="{{ url('/') }}">Beranda</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -37,7 +38,7 @@
                     </li>
                 @endguest
 
-                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Gallery</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -54,7 +55,7 @@
           {{Form::text('searchData', '', ['class' => 'form-control', 'placeholder' => 'Mencari Sesuatu?', 'required' => 'required'])}}
         </div>
         <div class="form-group">
-          {{Form::submit('submit', ['class' => 'btn btn-success'])}}
+          {{Form::submit('Cari', ['class' => 'btn btn-success'])}}
         </div>
   </div>      
   {!! Form::close() !!}

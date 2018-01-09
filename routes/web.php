@@ -21,7 +21,7 @@ Route::get('/tulis', function () {
     return redirect('blog.tulis');
 });
 
-Route::get('/', 'BlogController@index');
+Route::get('/', 'BlogController@index')->name('index');
 
 Route::get('/{slug}', 'BlogController@showPost');
 
@@ -30,5 +30,3 @@ Route::get('/tulis', 'BlogController@tulisPost');
 Route::post('/tulis/posting', 'BlogController@posting');
 
 Route::post('/search', 'BlogController@search');
-
-Route::get('/', 'BlogController@index')->name('index');

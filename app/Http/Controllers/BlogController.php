@@ -12,7 +12,7 @@ class BlogController extends Controller
     {
     	$posts = Post::where('created_at', '<=', Carbon::now())
 	    	->orderBy('created_at', 'desc')
-	    	->paginate(config('blog.posts_per_page'));
+	    	->paginate(3);
 
 	    return view('blog.index')->with('posts', $posts);
     }
@@ -34,6 +34,7 @@ class BlogController extends Controller
         $post = new Post;
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
+        $post->author = $request->user()->name;
 
         $post->save();
 
