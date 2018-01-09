@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return redirect('blog.index');
 });
@@ -28,3 +30,5 @@ Route::get('/tulis', 'BlogController@tulisPost');
 Route::post('/tulis/posting', 'BlogController@posting');
 
 Route::post('/search', 'BlogController@search');
+
+Route::get('/', 'BlogController@index')->name('index');

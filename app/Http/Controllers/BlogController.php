@@ -14,7 +14,7 @@ class BlogController extends Controller
 	    	->orderBy('created_at', 'desc')
 	    	->paginate(config('blog.posts_per_page'));
 
-	    return view('blog.index', compact('posts'));
+	    return view('blog.index')->with('posts', $posts);
     }
 
     public function showPost($slug)
@@ -31,11 +31,6 @@ class BlogController extends Controller
 
     public function posting(Request $request)
     {
-        $this->validate($request, [
-            'Judul' => 'required',
-            'Konten' => 'required'
-        ]);
-
         $post = new Post;
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
@@ -48,7 +43,7 @@ class BlogController extends Controller
     public function search(Request $request)
     {
         $search = $request->searchData;
-        $Posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(2);
-        return view('blog.index', ['name' => 'Result: '.$search])->with('posts', $Posts);
+        $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view('blog.index', ['msg' => 'Hasil Pencarian: '.$search])->with('posts', $posts);
     }
 }

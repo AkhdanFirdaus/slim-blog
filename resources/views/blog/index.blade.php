@@ -2,8 +2,20 @@
 
 @section('content')	
 	@include('inc.pesan')
-	<h5>Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</h5>
-	<hr>		
+	<h5>
+		@if (Request::is('/'))
+			Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
+		@else
+			<a class="btn btn-primary" onclick="history.go(-1)">
+		      &laquo; Kembali
+		    </a>
+			{{$msg}}
+		@endif	
+	</h5>	
+	<hr>
+	@if ($posts->isEmpty())
+		Maaf Postingan tidak ditemukan
+	@endif
 	<ul>
 		@foreach ($posts as $post)
 		<li>

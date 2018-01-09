@@ -1,26 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
-	<meta charset="UTF-8">
-	<title>{{config('blog.title')}}</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('blog.title') }}</title>
+
+    <!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/customstyle.css') }}">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 </head>
 <body>
-	@include('layouts.nav')	
-	<div class="judul">
-		@yield('judul')		
-	</div>
-	<div class="wadah">
-		<div class="container">			
+	@include('inc.nav')
+    @yield('judul')	
+	<div class="container">			
+		<div class="wadah">
 			@yield('content')
-		</div>	
+		</div>
 	</div>	
 	<div class="footer text-center">
 		2018 &copy; AkhdanFirdaus
 	</div>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
