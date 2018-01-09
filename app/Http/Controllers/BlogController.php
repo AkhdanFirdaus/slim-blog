@@ -42,7 +42,13 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect('/blog')->with('success', 'Postingan terkirim');
+        return redirect('/')->with('success', 'Postingan terkirim');
     }    
 
+    public function search(Request $request)
+    {
+        $search = $request->searchData;
+        $Posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(2);
+        return view('blog.index', ['name' => 'Result: '.$search])->with('posts', $Posts);
+    }
 }

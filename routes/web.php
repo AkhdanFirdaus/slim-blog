@@ -12,17 +12,19 @@
 */
 
 Route::get('/', function () {
-    return redirect('/blog');
+    return redirect('blog.index');
 });
 
-Route::get('/blog/tulis', function () {
-    return redirect('/blog/tulis');
+Route::get('/tulis', function () {
+    return redirect('blog.tulis');
 });
 
-Route::get('blog', 'BlogController@index');
+Route::get('/', 'BlogController@index');
 
-Route::get('blog/{slug}', 'BlogController@showPost');
+Route::get('/{slug}', 'BlogController@showPost');
 
-Route::get('blog/tulis', 'BlogController@tulisPost');
+Route::get('/tulis', 'BlogController@tulisPost');
 
 Route::post('/tulis/posting', 'BlogController@posting');
+
+Route::post('/search', 'BlogController@search');
