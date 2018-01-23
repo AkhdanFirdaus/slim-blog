@@ -15,16 +15,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/customstyle.css') }}">
 </head>
 <body>
+
 	@include('inc.nav')
-    @yield('judul')	
-	<div class="container">			
+  @include('inc.judul')
+	<div class="container">
 		<div class="wadah">
 			@yield('content')
 		</div>
-	</div>	
-	<div class="footer text-center">
-		2018 &copy; AkhdanFirdaus
 	</div>
+	@include('inc.footer')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

@@ -8,13 +8,13 @@ use Carbon\Carbon;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function blogIndex()
     {
     	$posts = Post::where('created_at', '<=', Carbon::now())
 	    	->orderBy('created_at', 'desc')
-	    	->paginate(3);
+	    	->paginate(4);
 
-	    return view('blog.index')->with('posts', $posts);
+	    return view('blog.blogIndex')->with('posts', $posts);
     }
 
     public function showPost($slug)
@@ -22,11 +22,6 @@ class BlogController extends Controller
     	$post = Post::whereSlug($slug)->firstorFail();
 
     	return view('blog.post')->withPost($post);
-    }    
-
-    public function tulisPost()
-    {
-        return view('blog.tulis');
     }
 
     public function posting(Request $request)
@@ -38,13 +33,13 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect('/')->with('success', 'Postingan terkirim');
-    }    
+        return redirect('/blog')->with('success', 'Postingan terkirim');
+    }
 
     public function search(Request $request)
     {
         $search = $request->searchData;
         $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view('blog.index', ['msg' => 'Hasil Pencarian: '.$search])->with('posts', $posts);
+        return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search])->with('posts', $posts);
     }
 }

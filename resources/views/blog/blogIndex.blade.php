@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('content')	
+@section('content')
 	@include('inc.pesan')
 	<h5>
-		@if (Request::is('/'))
-			Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
-		@else
+		@if (Request::is('/blog/search'))
 			<a class="btn btn-primary" onclick="history.go(-1)">
-		      &laquo; Kembali
-		    </a>
+		  	&laquo; Kembali
+		  </a>
 			{{$msg}}
-		@endif	
-	</h5>	
+		@else
+			Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
+		@endif
+	</h5>
 	<hr>
 	@if ($posts->isEmpty())
 		Maaf Postingan tidak ditemukan
@@ -21,9 +21,9 @@
 		<div class="col-md-6 kiri">
 			<h2 class="text-center">Gambar</h2>
 		</div>
-		<div class="col-md-6 kanan">		
+		<div class="col-md-6 kanan">
 			<em>({{ $post->created_at->format('M jS Y g:ia') }})</em>
-			<h3><a href="/{{$post->slug}}">{{ $post->title }}</a></h3>
+			<h3><a href="/blog/{{$post->slug}}">{{ $post->title }}</a></h3>
 			<p>
 				{{ str_limit($post->content) }}
 			</p>

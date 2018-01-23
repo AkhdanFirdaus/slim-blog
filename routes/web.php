@@ -13,20 +13,18 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return redirect('blog.index');
-});
+Route::get('/', 'PagesController@beranda')->name('beranda');
 
-Route::get('/tulis', function () {
-    return redirect('blog.tulis');
-});
+Route::get('/profile', 'PagesController@profile');
 
-Route::get('/', 'BlogController@index')->name('index');
+Route::post('/profile', 'PagesController@updateAvatar');
 
-Route::get('/{slug}', 'BlogController@showPost');
+Route::view('/blog/tulis', 'blog.tulis')->name('nulis');
 
-Route::get('/tulis', 'BlogController@tulisPost');
+Route::get('/blog', 'BlogController@blogIndex')->name('index');
 
-Route::post('/tulis/posting', 'BlogController@posting');
+Route::get('/blog/{slug}', 'BlogController@showPost');
 
-Route::post('/search', 'BlogController@search');
+Route::post('/blog/tulis/posting', 'BlogController@posting');
+
+Route::post('/blog/search', 'BlogController@search');

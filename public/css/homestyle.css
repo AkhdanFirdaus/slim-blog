@@ -1,0 +1,75 @@
+body{
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+a, a:hover, a:focus{
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.wrapper{
+  display: flex;
+  position: fixed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#sidebar{
+  min-width: 300px;
+  max-width: 300px;
+  height: 100vh;
+  background-color: #2C3E50;
+  color: #fff;
+  transition: all 0.3s;
+}
+#sidebar .sidebar-header{
+  background-color: #16a085;
+  padding: 40px;
+}
+#sidebar .components {
+  background-color: #fff;
+}
+#sidebar a{
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+#sidebar a:hover{
+  color: #7386D5;
+}
+.sidebar-header img{
+  width: 200px;
+  height: 200px;
+  border: 6px solid #ddd;
+}
+.wrapper2{
+  margin-left: 300px;
+  width: auto;
+  display: block;
+}
+#wrapper3{
+  padding: 90px;
+}
+#about{
+  padding-top: 46px;
+  padding-bottom: 46px;
+}
+.judul{
+  font-size: 9em;
+}
+.icon a{
+  background-color: #636B6F;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 13px;
+  color: #fff;
+  font-size: 2em;
+  margin-right: 20px;
+}
+.icon a:hover{
+  background-color: #009688;
+}
+
+#pendidikan{
+  padding-top: 46px;
+  padding-bottom: 46px;
+}

@@ -1,62 +1,63 @@
-body
-{
+body {
 	margin: 0;
 	background-color: #F8F9FA;
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
-textarea
-{
+textarea {
 	resize: none;
 }
 .navbar-nav {
     width: 100%;
-    text-align: center;    
+    text-align: center;
  }
 .navbar-nav li {
   float: none;
   display: inline-block;
 }
-.jumbotron
-{
+.jumbotron {
 	background-color: #1EBEA5;
 	color: #fff;
 	padding-top: 70px;
 	padding-bottom: 70px;
 }
-.wadah
-{
+.wadah {
 	padding: 50px;
 	background-color: #fff;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
-.footer
-{		
+.footer {
 	padding: 20px;
 	background-color: #273443;
 	color: #fff;
 }
-.konten
-{
+.konten {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-bottom: 10px solid #393838;
 }
-.kiri
-{
+.kiri {
 	background-color: #263238;
 	height: 300px;
+	transition: all ease 0.5s;
+  -webkit-transition: all ease 0.5s;
+  -moz-transition: all ease 0.5s;
 }
-.kanan
-{
+.kiri:hover {
+	background: rgba(24, 188, 156, 0.9);
+}
+.kanan {
 	padding: 50px;
-	border: 1px solid #EAEAEA;		
+	border: 1px solid #EAEAEA;
 	height: 300px;
 }
-.gambar-post
-{
+.gambar-post {
 	width: 100%;
 	height: 300px;
 	background-color: #263238;
 	margin-bottom: 20px;
+}
+.dropdown img{
+	width: 30px;
+	height: 30px;	
 }

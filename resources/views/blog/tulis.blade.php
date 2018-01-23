@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-	<a href="/">
-		<div>
-			<h5>Kembali</h5>
-		</div>
-	</a>
+	<a class="btn btn-primary" onclick="history.go(-1)">
+		&laquo; Kembali
+	</a>	
 	<h1>Ingin menulis sesuatu?</h1>
 
-	@include('inc.pesan')	
+	@include('inc.pesan')
 
-	{!! Form::open(['url' => 'tulis/posting']) !!}
+	{!! Form::open(['url' => '/blog/tulis/posting']) !!}
 
 	<div class="form-group">
 		{{Form::label('judul', 'Judul')}}
@@ -24,5 +22,5 @@
 		{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 		{{Form::reset('Reset', ['class' => 'btn btn-danger'])}}
 	</div>
-	{!! Form::close() !!}	
+	{!! Form::close() !!}
 @endsection
