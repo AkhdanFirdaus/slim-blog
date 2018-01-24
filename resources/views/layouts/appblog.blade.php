@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	@include('inc.nav')
+	@include('inc.blognav')
   @include('inc.judul')
 	<div class="container">
 		<div class="wadah">

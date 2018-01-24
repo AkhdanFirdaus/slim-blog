@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use Auth;
 use Image;
 use File;
@@ -26,13 +27,12 @@ class PagesController extends Controller
       $avatar = $request->file('avatar');
       $filename = time() . '.' . $avatar->getClientOriginalExtension();
 
-      if ($user->avatar !== 'avatar.png') {
+      if ($user->avatar !== 'default.jpg') {
                 $file = public_path('uploads/avatars/' . $user->avatar);
 
                 if (File::exists($file)) {
                     unlink($file);
                 }
-
             }
 
       Image::make($avatar)->fit(200, 200)->save( public_path('/uploads/avatars/' . $filename) );
@@ -40,6 +40,14 @@ class PagesController extends Controller
       $user->avatar = $filename;
       $user->save();
     }
+    return redirect('/profile');
+  }
+
+  public function updateName(Request $request, $id)
+  {
+    $name = ['name' => $request->name];
+
+    User::where('id', $id)->update($name);
     return redirect('/profile');
   }
 }

@@ -13,18 +13,42 @@
 
 Auth::routes();
 
-Route::get('/', 'PagesController@beranda')->name('beranda');
+// Route untuk home
+route::group(['prefix' => '/'], function(){
 
-Route::get('/profile', 'PagesController@profile');
+  Route::get('/', 'PagesController@beranda')->name('beranda');
 
-Route::post('/profile', 'PagesController@updateAvatar');
+  Route::get('/profile', 'PagesController@profile');
 
-Route::view('/blog/tulis', 'blog.tulis')->name('nulis');
+  Route::post('/profile', 'PagesController@updateAvatar');
 
-Route::get('/blog', 'BlogController@blogIndex')->name('index');
+  Route::post('/profile/{id}', 'PagesController@updateName');
 
-Route::get('/blog/{slug}', 'BlogController@showPost');
+});
 
-Route::post('/blog/tulis/posting', 'BlogController@posting');
+// Route untuk blog
+Route::group(['prefix' => '/blog'], function(){
 
-Route::post('/blog/search', 'BlogController@search');
+  Route::get('/', 'BlogController@blogIndex')->name('index');
+
+  Route::view('/tulis', 'blog.tulis')->name('nulis');
+
+  Route::get('/{slug}', 'BlogController@showPost');
+
+  Route::post('/tulis/posting', 'BlogController@posting');
+
+  Route::post('/search', 'BlogController@search');
+
+});
+
+// Route untuk gallery
+Route::group(['prefix' => '/gallery'], function(){
+
+    Route::get('/', 'AlbumsController@gallery');
+
+    Route::get('/create', 'AlbumsController@create');
+
+    Route::post('/create', 'AlbumsController@store');
+
+
+});

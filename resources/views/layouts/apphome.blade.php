@@ -7,9 +7,9 @@
 
     <title>Laravel</title>
 
-    <link rel="stylesheet" href="{{'css/app.css'}}">
-    <link rel="stylesheet" href="{{'css/homestyle.css'}}">
-    <link rel="stylesheet" href="{{'css/font-awesome.min.css'}}">
+    <link rel="stylesheet" href="{{'/css/app.css'}}">
+    <link rel="stylesheet" href="{{'/css/homestyle.css'}}">
+    <link rel="stylesheet" href="{{'/css/font-awesome.min.css'}}">
     <script src="{{ asset('js/app.js') }}"></script>
 
 </head>
@@ -21,7 +21,11 @@
 
         {{-- sidebar Header --}}
         <div class="sidebar-header">
-          <img src="/uploads/avatars/{{ $user->avatar }}" alt="" class="img-circle">
+          @guest
+            <img src="/uploads/avatars/default.jpg" alt="" class="img-circle">
+          @else
+            <img src="/uploads/avatars/{{ $user->avatar }}" alt="" class="img-circle">
+          @endguest
         @guest
           <div class="dropdown">
             <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,11 +64,10 @@
         <div "components">
           <a href="#about">About</a>
           <a href="#pengalaman">Experience</a>
-          <a href="#pendidikan">Education</a>
           <a href="#skill">Skill</a>
-          <a href="#">Minat</a>
+          <a href="#minat">Interest</a>
           <a href="/blog">Blog</a>
-          <a href="#">Gallery</a>
+          <a href="/gallery">Gallery</a>
         </div>
       </nav>
     </div>

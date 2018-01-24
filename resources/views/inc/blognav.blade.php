@@ -16,7 +16,7 @@
                         </ul>
                     </li>
                     @else
-                    <li><a href="/tulis">Tulis</a></li>
+                    <li><a href="/blog/tulis">Tulis</a></li>
                     <li class="active dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                             <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="" class="img-circle">

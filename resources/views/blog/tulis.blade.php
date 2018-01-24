@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.appblog')
 
 @section('content')
 	<a class="btn btn-primary" onclick="history.go(-1)">
 		&laquo; Kembali
-	</a>	
+	</a>
 	<h1>Ingin menulis sesuatu?</h1>
 
 	@include('inc.pesan')

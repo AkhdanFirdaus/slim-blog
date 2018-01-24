@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.appblog')
 
-@section('content')	
+@section('content')
     <h1>{{ $post->title }}</h1>
     <h5>{{ $post->created_at->format('M jS Y g:ia') }}</h5>
     <hr>
