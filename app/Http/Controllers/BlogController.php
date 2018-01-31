@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
+use Image;
 
 class BlogController extends Controller
 {
@@ -30,6 +31,12 @@ class BlogController extends Controller
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
         $post->author = $request->user()->name;
+
+        $foto = $request->file('post_image');
+        $filename = time() . '.' . $foto->getClientOriginalExtension();
+        Image::make($foto)->fit(400, 300)->save( public_path('/posts/post_cover/' . $filename) );
+
+        $post->post_image = $filename;
 
         $post->save();
 

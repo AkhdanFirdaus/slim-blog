@@ -33,8 +33,8 @@
               <span class="caret"></span>
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><a href="{{ route('login') }}">Login</a></li>
-              <li><a href="{{ route('register') }}">Register</a></li>
+              <li><a href="{{ route('login') }}"><span class="fa fa-sign-in"></span> Login</a></li>
+              <li><a href="{{ route('register') }}"><span class="fa fa-address-book"></span> Register</a></li>
             </ul>
           </div>
         @else
@@ -44,10 +44,10 @@
               <span class="caret"></span>
             </div>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="#">Setting</a></li>
+              <li><a href="/profile"><span class="fa fa-user-circle"></span> Profile</a></li>
+              <li><a href="#"><span class="fa fa-edit"></span> Setting</a></li>
               <li role="separator" class="divider"></li>
-              <li>
+              <li><span class="fa fa-sign-out"></span>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   Logout
                 </a>
@@ -62,20 +62,18 @@
 
         {{-- sidebar link --}}
         <div "components">
-          <a href="#about">About</a>
-          <a href="#pengalaman">Experience</a>
-          <a href="#skill">Skill</a>
-          <a href="#minat">Interest</a>
+          <br>
+          <a href="/#about">About</a>
+          <a href="/#pengalaman">Experience</a>
+          <a href="/#skill">Skill</a>      
           <a href="/blog">Blog</a>
           <a href="/gallery">Gallery</a>
         </div>
       </nav>
     </div>
     {{-- content --}}
-    <div class="wrapper2 container">
-      <div id="wrapper3">
-        @yield('homecontent')
-      </div>
+    <div class="wrapper2">
+      @yield('homecontent')
     </div>
 
 </body>

@@ -7,7 +7,9 @@
       $i = 1;
       $t = 1;
     @endphp
-    <h3>Albums</h3>
+    <hr>
+    <h1 class="text-center">Albums</h1>
+    <hr>
     <div id="albums">
         @foreach ($albums as $album)
 
@@ -25,10 +27,10 @@
                         <p>{{$album->description}}</p>
                     </div>
                     <div class="panel-footer text-center">
-                        <a href="#download"><span class="glyphicon glyphicon-download"></span></a>
+                        <a href="#download"><span class="fa fa-download"></span></a>
                         <a href="#facebook"><span class="fa fa-facebook"></span></a>
                         <a href="#twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#share"><span class="glyphicon glyphicon-share-alt"></span></a>
+                        <a href="#share"><span class="fa fa-share"></span></a>
                     </div>
                 </div>
             </div>

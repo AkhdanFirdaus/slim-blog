@@ -12,7 +12,7 @@
 
     <!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/customstyle.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/blogstyle.css') }}">
 </head>
 <body>
 
@@ -27,5 +27,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script>
+     var editor = document.getElementById("editor");
+       CKEDITOR.replace(editor,{
+       language:'en-gb'
+     });
+     CKEDITOR.config.allowedContent = true;
+  </script>
 </body>
 </html>

@@ -46,6 +46,6 @@ class AlbumsController extends Controller
     {
       $album = Album::with('Photos')->find($id);
 
-      return view('gallery.show', ['user' => Auth::user()])->with('albums', $albums);
+      return view('photoshow.photos.showalbum', ['user' => Auth::user()])->with('album', $album);
     }
 }

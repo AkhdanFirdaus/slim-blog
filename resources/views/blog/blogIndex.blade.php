@@ -18,8 +18,8 @@
 	@endif
 	@foreach ($posts as $post)
 	<div class="row konten">
-		<div class="col-md-6 kiri">
-			<h2 class="text-center">Gambar</h2>
+		<div class="col-md-6 kiri text-center">
+			<img src="/posts/post_cover/{{$post->post_image}}" alt="">
 		</div>
 		<div class="col-md-6 kanan">
 			<em>({{ $post->created_at->format('M jS Y g:ia') }})</em>

@@ -2,7 +2,12 @@
 
 @section('homecontent')
 {{-- content --}}
-<div id="about">
+<div class="bgimg1">
+  <div class="caption">
+    <span class="border">SELAMAT DATANG</span>
+  </div>
+</div>
+<div id="about" class="wrapper3" style="padding-top: 140px; padding-bottom: 140px;">
   <div class="bungkus">
     <h1 class="text-uppercase judul"><strong>Slim</strong><span class="text-primary">Blog</span></h1>
     <h4>Hanya untuk mengisi waktu luang | <span class="text-danger">akhdan.musyaffa.firdaus@gmail.com</span></h4>
@@ -16,23 +21,39 @@
     </div>
   </div>
 </div>
-<hr>
-<div id="pendidikan">
-  <blockquote cite="http://">
-    <h1 class="text-uppercase">Pendidikan</h1>
-  </blockquote>
-  <br>
-  <div>
-    <h2>Sekolah Dasar</h2>
-    <h4>SDN Taman Kopo Indah</h4>
+
+<div id="pengalaman">
+  <div class="bgimg2">
+    <div class="caption">
+      <span class="border">PENGALAMAN</span>
+    </div>
   </div>
-  <div>
-    <h2>Sekolah Menengah Pertama</h2>
-    <h4>SMPN 1 Margahayu</h4>
+  <div style="color: #ddd; background-color:#282E34;" class="container wrapper4">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa maxime, repellendus harum autem, voluptas, nostrum ratione commodi fuga saepe atque iure voluptatem iusto reprehenderit temporibus quisquam repellat. Ratione quisquam, perspiciatis consequatur. Nisi cumque illum qui eum vel rem tempore, commodi quod reiciendis dolore, nemo nam consequuntur, libero aliquam placeat animi!</p>
   </div>
-  <div>
-    <h2>Sekolah Menengah Kejuruan</h2>
-    <h4>SMKN 1 Katapang</h4>
+</div>
+
+<div id="skill">
+  <div class="bgimg3">
+    <div class="caption">
+      <span class="border">SKILL</span>
+    </div>
+  </div>
+  <div class="container wrapper4">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Web</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nihil animi tenetur ipsam sit corporis nesciunt in amet, praesentium ad.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Desktop</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem hic eos quos minima odit porro, a quo consectetur reiciendis blanditiis!</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Mobile</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad iste expedita cum esse perspiciatis vel iusto autem animi eligendi ducimus!</p>
+      </div>
+    </div>
   </div>
 </div>
 @endsection

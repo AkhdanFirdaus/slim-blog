@@ -4,7 +4,9 @@
     <h1>{{ $post->title }}</h1>
     <h5>{{ $post->created_at->format('M jS Y g:ia') }}</h5>
     <hr>
-    <div class="gambar-post text-center"></div>
+    <div class="gambar-post text-center">
+      <img src="/posts/post_cover/{{$post->post_image}}" alt="">
+    </div>
     {!! nl2br(e($post->content)) !!}
     <hr>
     <button class="btn btn-primary" onclick="history.go(-1)">

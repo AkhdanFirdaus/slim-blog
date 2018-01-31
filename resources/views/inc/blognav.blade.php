@@ -39,7 +39,7 @@
                     </li>
                 @endguest
 
-                    <li><a href="#">Gallery</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

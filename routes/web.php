@@ -31,7 +31,7 @@ Route::group(['prefix' => '/blog'], function(){
 
   Route::get('/', 'BlogController@blogIndex')->name('index');
 
-  Route::view('/tulis', 'blog.tulis')->name('nulis');
+  Route::view('/tulis', 'blog.post-add')->name('nulis');
 
   Route::get('/{slug}', 'BlogController@showPost');
 
@@ -50,5 +50,17 @@ Route::group(['prefix' => '/gallery'], function(){
 
     Route::post('/create', 'AlbumsController@store');
 
+    Route::get('/{id}', 'AlbumsController@show');
+
+
+
+});
+
+// Route untuk foto
+Route::group(['prefix' => '/gallery/photos'], function(){
+
+  Route::get('/create/{id}', 'PhotosController@create');
+
+  Route::post('/create', 'PhotosController@store');
 
 });
