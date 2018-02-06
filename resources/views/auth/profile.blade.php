@@ -1,6 +1,7 @@
 @extends('layouts.apphome')
 
 @section('homecontent')
+<div class="container wrapper4">
   <div id="profile">
     <blockquote cite="http://">
       <h1>Update Profile</h1>
@@ -33,4 +34,5 @@
       </div>
     </div>
   </div>
+</div>
 @endsection

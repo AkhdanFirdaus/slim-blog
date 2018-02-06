@@ -5,7 +5,7 @@
 	<h5>
 		@if (Request::is('/blog/search'))
 			<a class="btn btn-primary" onclick="history.go(-1)">
-		  	&laquo; Kembali
+		  	<span class="fa fa-arrow-left"></span> Kembali
 		  </a>
 			{{$msg}}
 		@else
@@ -25,7 +25,7 @@
 			<em>({{ $post->created_at->format('M jS Y g:ia') }})</em>
 			<h3><a href="/blog/{{$post->slug}}">{{ $post->title }}</a></h3>
 			<p>
-				{{ str_limit($post->content) }}
+				{!! str_limit($post->content) !!}
 			</p>
 			<hr>
 			Writted By: {{ $post->author }}

@@ -5,11 +5,15 @@
     <h5>{{ $post->created_at->format('M jS Y g:ia') }}</h5>
     <hr>
     <div class="gambar-post text-center">
-      <img src="/posts/post_cover/{{$post->post_image}}" alt="">
+      <img src="/posts/post_cover/{{$post->post_image}}" alt="" width="400px" height="300px">
     </div>
-    {!! nl2br(e($post->content)) !!}
+    {!! $post->content !!}
     <hr>
+    <div class="pull-right">
+      Writted By: <strong>{{ $post->author }}</strong>
+      <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="" class="img-circle" width="50px" height="auto">
+    </div>
     <button class="btn btn-primary" onclick="history.go(-1)">
-      &laquo; Kembali
+      <span class="fa fa-arrow-left"></span> Kembali
     </button>
 @endsection

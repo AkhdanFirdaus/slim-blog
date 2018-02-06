@@ -11,8 +11,9 @@
     <title>{{ config('blog.title') }}</title>
 
     <!-- Styles -->
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/blogstyle.css') }}">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+  	<link rel="stylesheet" type="text/css" href="{{ asset('css/blogstyle.css') }}">
+    <link rel="stylesheet" href="{{'/css/font-awesome.min.css'}}">
 </head>
 <body>
 
