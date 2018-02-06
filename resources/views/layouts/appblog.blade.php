@@ -19,11 +19,9 @@
 
 	@include('inc.blognav')
   @include('inc.judul')
-	<div class="container">
-		<div class="wadah">
+  <div class="container-fluid">
 			@yield('content')
-		</div>
-	</div>
+  </div>
 	@include('inc.footer')
 
     <!-- Scripts -->

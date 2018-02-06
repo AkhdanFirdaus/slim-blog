@@ -49,5 +49,5 @@ class PagesController extends Controller
 
     User::where('id', $id)->update($name);
     return redirect('/profile');
-  }  
+  }
 }

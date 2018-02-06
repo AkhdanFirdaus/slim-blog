@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('blog.title') }}</title>
 
     <link rel="stylesheet" href="{{'/css/app.css'}}">
     <link rel="stylesheet" href="{{'/css/homestyle.css'}}">
     <link rel="stylesheet" href="{{'/css/font-awesome.min.css'}}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/customscript.js') }}"></script>
 
 </head>
-<body>
-
+<body id="page-top">
+<div class="wrapper">
     {{-- sidebar --}}
-    <div class="wrapper text-center navbar-fixed-left">
+    <div class="text-center navbar-fixed-left">
       <nav id="sidebar">
-
         {{-- sidebar Header --}}
         <div class="sidebar-header">
           @guest
@@ -65,16 +65,16 @@
           <br>
           <a href="/#about">About</a>
           <a href="/#pengalaman">Experience</a>
-          <a href="/#skill">Skill</a>      
+          <a href="/#skill">Skill</a>
           <a href="/blog">Blog</a>
           <a href="/gallery">Gallery</a>
         </div>
       </nav>
     </div>
     {{-- content --}}
-    <div class="wrapper2">
+    <div id="wrapper2">
       @yield('homecontent')
     </div>
-
+</div>
 </body>
 </html>

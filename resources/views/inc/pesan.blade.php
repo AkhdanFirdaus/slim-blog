@@ -12,6 +12,12 @@
 	</div>
 @endif
 
+@if (session('hapus'))
+	<div class="alert alert-danger">
+		{{session('hapus')}}
+	</div>
+@endif
+
 @if (session('error'))
 	<div class="alert alert-danger">
 		{{session('error')}}

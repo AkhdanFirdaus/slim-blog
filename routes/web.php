@@ -39,6 +39,8 @@ Route::group(['prefix' => '/blog'], function(){
 
   Route::post('/search', 'BlogController@search');
 
+  Route::delete('/hapus/{id}', 'BlogController@hapus');
+
 });
 
 // Route untuk gallery

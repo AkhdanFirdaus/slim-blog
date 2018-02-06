@@ -13,7 +13,7 @@ class BlogController extends Controller
     {
     	$posts = Post::where('created_at', '<=', Carbon::now())
 	    	->orderBy('created_at', 'desc')
-	    	->paginate(4);
+	    	->paginate(6);
 
 	    return view('blog.blogIndex')->with('posts', $posts);
     }
@@ -48,5 +48,14 @@ class BlogController extends Controller
         $search = $request->searchData;
         $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
         return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search])->with('posts', $posts);
+    }
+
+    public function hapus($id)
+    {
+      $post = Post::find($id);
+      $post->delete($id);
+
+      return redirect('/blog')->with('hapus', 'post telah dihapus');
+
     }
 }

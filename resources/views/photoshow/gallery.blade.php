@@ -7,7 +7,6 @@
       $i = 1;
       $t = 1;
     @endphp
-    <hr>
     <h1 class="text-center">Albums</h1>
     <hr>
     <div id="albums">
