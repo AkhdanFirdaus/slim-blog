@@ -1,6 +1,7 @@
 @extends('layouts.appblog')
 
-@section('content')
+@section('blogcontent')
+  <div class="container">
     <h1>{{ $post->title }}</h1>
     <h5>{{ $post->created_at->format('M jS Y g:ia') }}</h5>
     <hr>
@@ -11,9 +12,10 @@
     <hr>
     <div class="pull-right">
       Writted By: <strong>{{ $post->author }}</strong>
-      <img src="/uploads/avatars/{{ Auth::user()->avatar }}" alt="" class="img-circle" width="50px" height="auto">
+      <img src="/uploads/avatars/default.jpg" alt="" class="img-circle" width="50px" height="auto">
     </div>
     <button class="btn btn-primary" onclick="history.go(-1)">
       <span class="fa fa-arrow-left"></span> Kembali
     </button>
+  </div>
 @endsection

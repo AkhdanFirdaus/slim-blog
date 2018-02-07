@@ -1,11 +1,15 @@
 @extends('layouts.appblog')
 
-@section('content')
+@section('blogcontent')
+	<div class="container">
 	<div class="row">
+		<div class="col-md-3">
+			sidebar
+		</div>
 		<div class="col-md-9">
 			@include('inc.pesan')
 			<h5>
-				@if (Request::is('/blog/search'))
+				@if (Request::is('/post/search'))
 						<a class="btn btn-primary" onclick="history.go(-1)">
 					  	<span class="fa fa-arrow-left"></span> Kembali
 					  </a>
@@ -29,9 +33,9 @@
 					<img src="/posts/post_cover/{{$post->post_image}}" alt="">
 					<div class="caption">
 						<div class="text">
-							<strong><h3><a href="/blog/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
+							<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
 							<p>{{ $post->author }} - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
-							{{ Form::open(['url' => '/blog/hapus/'. $post->id, 'method' => 'delete']) }}
+							{{ Form::open(['url' => '/post/hapus/'. $post->id, 'method' => 'delete']) }}
 								<button type="submit" class="label label-danger">Hapus</button>
 								{{ Form::token() }}
 							{{ Form::close() }}
@@ -45,8 +49,6 @@
 			</div>
 			<hr>
 		</div>
-		<div class="col-md-3" id="sidebar">
-			sidebar
-		</div>
+	</div>
 	</div>
 @endsection

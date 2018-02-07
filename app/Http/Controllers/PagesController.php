@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
+use Carbon\Carbon;
 use Auth;
 use Image;
 use File;
@@ -12,7 +14,11 @@ class PagesController extends Controller
 {
   public function beranda()
   {
-    return view('home', ['user' => Auth::user()]);
+    $posts = Post::where('created_at', '<=', Carbon::now())
+      ->orderBy('created_at', 'desc')
+      ->paginate(3);
+
+    return view('home', ['user' => Auth::user()])->with('posts', $posts);
   }
 
   public function profile()

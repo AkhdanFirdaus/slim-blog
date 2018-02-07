@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Carbon\Carbon;
 use Image;
+use Auth;
 
 class BlogController extends Controller
 {
@@ -25,6 +26,11 @@ class BlogController extends Controller
     	return view('blog.post')->withPost($post);
     }
 
+    public function ngepost()
+    {
+      return view('blog.post-add', ['user' => Auth::user()]);
+    }
+
     public function posting(Request $request)
     {
         $post = new Post;
@@ -40,7 +46,7 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect('/blog')->with('success', 'Postingan terkirim');
+        return redirect('/post')->with('success', 'Postingan terkirim');
     }
 
     public function search(Request $request)
@@ -55,7 +61,7 @@ class BlogController extends Controller
       $post = Post::find($id);
       $post->delete($id);
 
-      return redirect('/blog')->with('hapus', 'post telah dihapus');
+      return redirect('/post')->with('hapus', 'post telah dihapus');
 
     }
 }

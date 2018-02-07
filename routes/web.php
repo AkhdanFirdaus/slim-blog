@@ -27,11 +27,11 @@ route::group(['prefix' => '/'], function(){
 });
 
 // Route untuk blog
-Route::group(['prefix' => '/blog'], function(){
+Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex')->name('index');
 
-  Route::view('/tulis', 'blog.post-add')->name('nulis');
+  Route::get('/tulis', 'BlogController@ngepost')->name('nulis');
 
   Route::get('/{slug}', 'BlogController@showPost');
 

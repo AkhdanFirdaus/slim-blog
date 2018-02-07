@@ -1,6 +1,7 @@
 @extends('layouts.appblog')
 
-@section('content')
+@section('blogcontent')
+	<div class="container">
 	<a class="btn btn-primary" onclick="history.go(-1)">
 		<span class="fa fa-arrow-left"></span> Kembali
 	</a>
@@ -8,7 +9,7 @@
 
 	@include('inc.pesan')
 
-	{!! Form::open(['url' => '/blog/tulis/posting', 'enctype' => 'multipart/form-data']) !!}
+	{!! Form::open(['url' => '/post/tulis/posting', 'enctype' => 'multipart/form-data']) !!}
 
 	<div class="form-group">
 		{{Form::label('post_image', 'Post Image')}}
@@ -28,4 +29,16 @@
 		{{Form::reset('Reset', ['class' => 'btn btn-danger'])}}
 	</div>
 	{!! Form::close() !!}
+	</div>
+
+	<!-- Scripts -->
+	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+	<script>
+	 var editor = document.getElementById("editor");
+		 CKEDITOR.replace(editor,{
+		 language:'en-gb'
+	 });
+	 CKEDITOR.config.allowedContent = true;
+</script>
 @endsection

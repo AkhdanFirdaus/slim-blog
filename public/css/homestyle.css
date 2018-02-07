@@ -1,19 +1,9 @@
-html {
-    overflow: scroll;
-    overflow-x: hidden;
-}
-::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
-}
-/* optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
 body{
   margin: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  height: 100%;
+  font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+textarea{
+  resize: none;
 }
 a, a:hover, a:focus{
   color: inherit;
@@ -21,23 +11,24 @@ a, a:hover, a:focus{
   transition: all 0.3s;
 }
 
+
+
 /* sidebar */
-.luhur{
-  margin-top: 10px;
+.navigasi{
+  margin-bottom: 10px;
 }
 .wrapper{
-  display: flex;
-  align-items: stretch;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: auto;
 }
 #sidebar{
   margin-left: -300px;
   height: 100vh;
-  background-color: #2C3E50;
   color: #fff;
+  background-color: #2C3E50;
   transition: all 0.3s;
   position: fixed;
   z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 #sidebar.active {
   margin-left: 0;
@@ -55,7 +46,7 @@ a, a:hover, a:focus{
   padding: 40px;
 }
 #sidebar .components {
-  background-color: #fff;
+
 }
 #sidebar a{
   padding: 10px;
@@ -75,7 +66,6 @@ a, a:hover, a:focus{
         transition: all 0.3s;
     }
 }
-
 .sidebar-header img{
   width: 200px;
   height: 200px;
@@ -86,55 +76,74 @@ a, a:hover, a:focus{
 #wrapper2{
   margin-left: 0;
   width: auto;
+  height: 100vh;
   transition: all 0.3s;
 }
 #wrapper2.active{
   margin-left: 300px;
   width: auto;
+  height: 100vh;
   transition: all 0.3s;
 }
 @media (max-width: 768px) {
     #wrapper2{
       margin-left: 0;
       width: auto;
+      height: 100vh;
       transition: all 0.3s;
     }
     #wrapper2.active{
       margin-left: 300px;
       width: auto;
+      height: 100vh;
       transition: all 0.3s;
     }
 }
 /* ==== */
-
-.wrapper3{
-  width: auto;
-}
-.wrapper4{
-  padding: 30px;
-  width: auto;
-}
-#headline{
-  height: 100vh;
-}
-#post{
-  height: 100vh;
-}
-#gallery{
-  height: 100vh;
-}
-#about{
-
-}
-#headline .bungkus{
+section{
   padding: 90px;
-  padding-top: 120px;
+  width: auto;
 }
-#gallery{
-  padding-top: 150px;
+
+section h2{
+  font-size: 3em;
+  margin: 0;
 }
+
+hr.star{
+  border: none;
+  border-top: #333 solid 5px;
+  max-width: 320px;
+  text-align: center;
+  margin: 25px auto 30px;
+}
+hr.star.star-light{
+  border-top: #fff solid 5px;
+}
+
 .judul{
   font-size: 9em;
+}
+
+#headline{
+  min-height: 100vh;
+}
+#post{
+  min-height: 100vh;
+}
+#gallery{
+  min-height: 100vh;
+  color: #fff;
+}
+#about{
+  min-height: 100vh;
+  background-color: #18BC9C;
+  color: #fff;
+  font-size: 20px;
+}
+#contact{
+  min-height: 100vh;
+  font-size: 20px;
 }
 .icon a{
   background-color: #636B6F;
@@ -149,6 +158,8 @@ a, a:hover, a:focus{
 .icon a:hover{
   background-color: #009688;
 }
+
+
 .bgimg1, .bgimg2, .bgimg3{
   position: relative;
   background-attachment: fixed;
@@ -158,16 +169,74 @@ a, a:hover, a:focus{
 }
 .bgimg1{
   background-image: url('/bg/1.jpg');
-  min-height: 100vh;
 }
 .bgimg2{
   background-image: url('/bg/2.jpg');
-  min-height: 100vh;
 }
-.bgimg3{
-  background-image: url('/bg/3.jpg');
-  min-height: 500px;
+
+/* Post */
+.post {
+	position: relative;
+	margin-bottom: 30px;
 }
-.clear{
-  clear: both;
+.post img {
+	width: 100%;
+	height: 200px;
+	display: block;
+}
+.caption {
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.post:hover .caption {
+	opacity: 1;
+}
+
+.text {
+	color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.judul{
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+.jumbotron {
+	background-color: #1EBEA5;
+	color: #fff;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+.gambar-post {
+	width: 100%;
+	height: 300px;
+	background-color: #263238;
+	margin-bottom: 20px;
+}
+
+/* footer */
+#footer{
+	margin-top: 20px;
+	background-color: #2C3E50;
+	color: #fff;
+	padding: 20px;
+}
+
+#footer span{
+	color: #C54641;
 }
