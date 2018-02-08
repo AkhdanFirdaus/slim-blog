@@ -29,17 +29,21 @@ route::group(['prefix' => '/'], function(){
 // Route untuk blog
 Route::group(['prefix' => '/post'], function(){
 
-  Route::get('/', 'BlogController@blogIndex')->name('index');
+  Route::get('/', 'BlogController@blogIndex');
 
-  Route::get('/tulis', 'BlogController@ngepost')->name('nulis');
+  Route::get('/tulis', 'BlogController@ngepost');
+
+  Route::post('/tulis', 'BlogController@posting');
 
   Route::get('/{slug}', 'BlogController@showPost');
 
-  Route::post('/tulis/posting', 'BlogController@posting');
+  Route::get('/edit/{id}', 'BlogController@edit');
 
-  Route::post('/search', 'BlogController@search');
+  Route::post('/edit/{id}', 'BlogController@update');
 
   Route::delete('/hapus/{id}', 'BlogController@hapus');
+
+  Route::post('/search', 'BlogController@search');
 
 });
 

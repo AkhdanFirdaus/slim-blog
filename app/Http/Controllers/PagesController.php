@@ -14,6 +14,11 @@ class PagesController extends Controller
 {
   public function beranda()
   {
+    // // Acak
+    // $posts = Post::inRandomOrder()
+    //   ->paginate(3);
+
+    // Berdasarkan tanggal
     $posts = Post::where('created_at', '<=', Carbon::now())
       ->orderBy('created_at', 'desc')
       ->paginate(3);

@@ -61,17 +61,25 @@
   </nav>
 </div>
 
-<div class="permodalan">
-  <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      @include('auth.login')
-    </div>
-  </div>
 
-  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      @include('auth.register')
+@if (Request::is('/'))
+  <div></div>
+@else
+  <div class="navbar-fixed-top text-right container-fluid navigasi">
+    {!! Form::open(['url' => '/post/search']) !!}
+    <div class="form-inline">
+      <div class="form-group">
+        {{Form::text('searchData', '', ['class' => 'form-control', 'placeholder' => 'Mencari Sesuatu?', 'required' => 'required'])}}
+      </div>
+      <div class="form-group">
+      {{Form::submit('Cari', ['class' => 'btn btn-success'])}}
+      </div>
     </div>
+    {!! Form::close() !!}
   </div>
+@endif
+<!-- Modal -->
+<div class="permodalan">
+      @include('auth.login')
+      @include('auth.register')
 </div>

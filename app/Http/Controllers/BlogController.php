@@ -7,6 +7,7 @@ use App\Post;
 use Carbon\Carbon;
 use Image;
 use Auth;
+use File;
 
 class BlogController extends Controller
 {
@@ -16,14 +17,15 @@ class BlogController extends Controller
 	    	->orderBy('created_at', 'desc')
 	    	->paginate(6);
 
-	    return view('blog.blogIndex')->with('posts', $posts);
+	    return view('blog.blogIndex', ['user' => Auth::user()])->with('posts', $posts);
     }
 
     public function showPost($slug)
     {
+
     	$post = Post::whereSlug($slug)->firstorFail();
 
-    	return view('blog.post')->withPost($post);
+    	return view('blog.post', ['user' => Auth::user()])->withPost($post);
     }
 
     public function ngepost()
@@ -61,7 +63,34 @@ class BlogController extends Controller
       $post = Post::find($id);
       $post->delete($id);
 
+      if ($post->post_image !== 'default.png') {
+          $file = public_path('posts/post_cover/' . $post->post_image);
+
+          if (File::exists($file)) {
+              unlink($file);
+          }
+      }
+
       return redirect('/post')->with('hapus', 'post telah dihapus');
 
+    }
+
+    public function edit($id)
+    {
+      $post = Post::find($id);
+
+      return view('blog.post-edit', ['user' => Auth::user()])->withPost($post);
+    }
+
+    public function update(Request $request, $id)
+    {
+      $post = [
+        'title' => $request->input('Judul'),
+        'content' => $request->input('Konten')
+      ];
+
+      Post::where('id', $id)->update($post);
+
+      return redirect('/post')->with('success', 'Pesan Telah di Ubah');
     }
 }

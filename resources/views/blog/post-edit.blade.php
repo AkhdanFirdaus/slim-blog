@@ -9,23 +9,18 @@
 
 	@include('inc.pesan')
 
-	{!! Form::open(['url' => '/post/tulis', 'enctype' => 'multipart/form-data', 'method' => 'post']) !!}
-
-	<div class="form-group">
-		{{Form::label('post_image', 'Post Image')}}
-		{{Form::file('post_image')}}
-	</div>
+	{!! Form::open(['url' => '/post/edit/'.$post->id, 'method' => 'post']) !!}
 
 	<div class="form-group">
 		{{Form::label('judul', 'Judul')}}
-		{{Form::text('Judul', '', ['class' => 'form-control', 'placeholder' => 'Pastikan judul menarik', 'required' => 'required'])}}
+		{{Form::text('Judul', $post->title, ['class' => 'form-control', 'placeholder' => 'Pastikan judul menarik', 'required' => 'required'])}}
 	</div>
 	<div class="form-group">
 		{{Form::label('konten', 'Konten')}}
-		{{Form::textarea('Konten', '', ['id' => 'editor', 'class' => 'form-control', 'placeholder' => 'Tuangkan apa yang ingin anda tuliskan', 'required' => 'required'])}}
+		{{Form::textarea('Konten', $post->content, ['id' => 'editor', 'class' => 'form-control', 'placeholder' => 'Tuangkan apa yang ingin anda tuliskan', 'required' => 'required'])}}
 	</div>
 	<div>
-		{{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+		{{Form::submit('Save changes', ['class' => 'btn btn-success'])}}
 		{{Form::reset('Reset', ['class' => 'btn btn-danger'])}}
 	</div>
 	{!! Form::close() !!}

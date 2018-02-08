@@ -5,8 +5,4 @@ $(document).ready(function () {
         // $('#wrapper2').toggleClass('active');
     });
 
-    // $('#myModal').on('shown.bs.modal', function () {
-    //   $('#myInput').focus();
-    // });
-
 });

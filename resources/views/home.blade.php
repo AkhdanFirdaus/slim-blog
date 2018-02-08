@@ -73,7 +73,7 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" class="bgimg3">
   <div class="row">
     <div class="col-lg-12 text-center">
         <h2>Contact Me</h2>
@@ -95,7 +95,10 @@
     <div class="form-group">
       {{Form::textarea('Pesan', '', ['class' => 'form-control', 'placeholder' => 'Pesan', 'required' => 'required'])}}
     </div>
-    
+    <div class="form-group text-right">
+      {{Form::submit('Send', ['class' => 'btn btn-success'])}}
+    </div>
+
     {!!Form::close() !!}
   </div>
 </section>
