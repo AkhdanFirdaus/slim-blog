@@ -39,10 +39,11 @@ class BlogController extends Controller
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
         $post->author = $request->user()->name;
+        $post->author_avatar = $request->user()->avatar;
 
         $foto = $request->file('post_image');
         $filename = time() . '.' . $foto->getClientOriginalExtension();
-        Image::make($foto)->fit(400, 300)->save( public_path('/posts/post_cover/' . $filename) );
+        Image::make($foto)->save( public_path('/posts/post_cover/' . $filename) );
 
         $post->post_image = $filename;
 
@@ -55,24 +56,7 @@ class BlogController extends Controller
     {
         $search = $request->searchData;
         $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search])->with('posts', $posts);
-    }
-
-    public function hapus($id)
-    {
-      $post = Post::find($id);
-      $post->delete($id);
-
-      if ($post->post_image !== 'default.png') {
-          $file = public_path('posts/post_cover/' . $post->post_image);
-
-          if (File::exists($file)) {
-              unlink($file);
-          }
-      }
-
-      return redirect('/post')->with('hapus', 'post telah dihapus');
-
+        return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search], ['user' => Auth::user()])->with('posts', $posts);
     }
 
     public function edit($id)
@@ -92,5 +76,22 @@ class BlogController extends Controller
       Post::where('id', $id)->update($post);
 
       return redirect('/post')->with('success', 'Pesan Telah di Ubah');
+    }
+
+    public function hapus($id)
+    {
+      $post = Post::find($id);
+      $post->delete($id);
+
+      if ($post->post_image !== 'default.png') {
+          $file = public_path('posts/post_cover/' . $post->post_image);
+
+          if (File::exists($file)) {
+              unlink($file);
+          }
+      }
+
+      return redirect('/post')->with('hapus', 'post telah dihapus');
+
     }
 }

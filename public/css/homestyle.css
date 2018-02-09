@@ -6,20 +6,18 @@ textarea{
   resize: none;
 }
 a, a:hover, a:focus{
-  color: inherit;
   text-decoration: none;
   transition: all 0.3s;
 }
 
-
+.wrapper{
+  width: auto;
+}
 
 /* sidebar */
 .navigasi{
   margin-top: 10px;
   margin-bottom: 10px;
-}
-.wrapper{
-  width: auto;
 }
 #sidebar{
   margin-left: -300px;
@@ -53,6 +51,7 @@ a, a:hover, a:focus{
   padding: 10px;
   font-size: 1.1em;
   display: block;
+  color: #fff;
 }
 #sidebar a:hover{
   color: #7386D5;
@@ -72,6 +71,18 @@ a, a:hover, a:focus{
   height: 200px;
   border: 6px solid #ddd;
 }
+
+#search{
+  float: right;
+  margin-right: -300px;
+  transition: all 0.3s;
+}
+#search.active{
+  float: right;
+  margin-right: 5px;
+  transition: all 0.3s;
+}
+
 
 /* wrapper konten */
 #wrapper2{
@@ -179,40 +190,17 @@ hr.star.star-light{
 } */
 /* Post */
 .post {
-	position: relative;
-	margin-bottom: 30px;
+  background-color: #fff;
 }
 .post img {
 	width: 100%;
-	height: 200px;
+	height: auto;
 	display: block;
 }
-.caption {
-	position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
+.caption{
+  padding: 20px;
 }
 
-.post:hover .caption {
-	opacity: 1;
-}
-
-.text {
-	color: white;
-  font-size: 12px;
-  position: absolute;
-  top: 50%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
 .judul{
   margin-top: 90px;
   margin-bottom: 20px;
@@ -233,7 +221,7 @@ hr.star.star-light{
 }
 .gambar-post img{
   width: 100%;
-  height: 300px;  
+  height: 300px;
 }
 .ket{
   margin-bottom: 40px;

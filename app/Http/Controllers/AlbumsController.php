@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Album;
 use Auth;
 use Image;
+use File;
 
 class AlbumsController extends Controller
 {
@@ -30,7 +31,7 @@ class AlbumsController extends Controller
 
       $foto = $request->file('cover_image');
       $filename = time() . '.' . $foto->getClientOriginalExtension();
-      Image::make($foto)->fit(250, 200)->save( public_path('/uploads/album_covers/' . $filename) );
+      Image::make($foto)->save( public_path('/uploads/album_covers/' . $filename) );
 
       $album = new Album;
       $album->name = $request->input('name');
@@ -46,6 +47,22 @@ class AlbumsController extends Controller
     {
       $album = Album::with('Photos')->find($id);
 
-      return view('photoshow.photos.showalbum', ['user' => Auth::user()])->with('album', $album);
+      return view('photoshow.photos.photo', ['user' => Auth::user()])->with('album', $album);
+    }
+
+    public function delAlbum($id)
+    {
+      $album = Album::find($id);
+      $album->delete($id);
+
+      if ($album->cover_image !== 'default.png') {
+          $file = public_path('album_covers/' . $album->cover_image);
+
+          if (File::exists($file)) {
+              unlink($file);
+          }
+      }
+
+      return redirect('/gallery')->with('hapus', 'Album berhasil dihapus');
     }
 }

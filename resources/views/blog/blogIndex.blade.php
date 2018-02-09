@@ -2,18 +2,15 @@
 
 @section('blogcontent')
 	<div class="container">
-	<div class="row">
-		<div class="col-md-3">
-			sidebar
-		</div>
-		<div class="col-md-9">
 			@include('inc.pesan')
 			<h5>
-				@if (Request::is('/post/search'))
-						<a class="btn btn-primary" onclick="history.go(-1)">
-					  	<span class="fa fa-arrow-left"></span> Kembali
-					  </a>
-						{{$msg}}
+				@if (Request::is('post/search'))
+					<h2>
+							<a class="btn btn-primary" onclick="history.go(-1)">
+					  		<span class="fa fa-arrow-left"></span> Kembali
+					  	</a>
+							<small>{{$msg}}</small>
+					</h2>
 				@else
 					<div class="text-center">
 						Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}
@@ -22,29 +19,32 @@
 			</h5>
 			<hr>
 			@if ($posts->isEmpty())
-				<strong><p>Maaf Postingan tidak ditemukan</p></strong>
-				<a class="btn btn-primary" onclick="history.go(-1)">
-					<span class="fa fa-arrow-left"></span> Kembali
-				</a>
+				<div class="panel">
+					<div class="panel-body">
+						<h2>Maaf Postingan tidak ditemukan</h2>
+					</div>
+				</div>
+
 			@endif
-			@foreach ($posts as $post)
-			<div class="col-md-4">
+			<div class="row">
+			@foreach ($posts as $count => $post)
+				@if ($count % 3 == 0)
+				</div><div class="row">
+				@endif
+			<div class="col-md-4" style="margin-bottom: 30px;">
 				<div class="post">
-					<img src="/posts/post_cover/{{$post->post_image}}" alt="">
+					<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
 					<div class="caption">
-						<div class="text">
-							<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
-							<p>{{ $post->author }} - <em>({{ $post->created_at->format('M jS Y') }})</em></p>							
-						</div>
+						<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
+						<p>{{ $post->author }} - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
 					</div>
 				</div>
 			</div>
 			@endforeach
+			</div>
 			<div class="text-center">
 				{!! $posts->render() !!}
 			</div>
 			<hr>
-		</div>
-	</div>
 	</div>
 @endsection

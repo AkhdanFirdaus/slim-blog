@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('post_image')->default('default.png');
             $table->text('content');
             $table->string('author');
+            $table->string('author_avatar');
             $table->timestamps();
         });
     }

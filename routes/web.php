@@ -58,7 +58,7 @@ Route::group(['prefix' => '/gallery'], function(){
 
     Route::get('/{id}', 'AlbumsController@show');
 
-
+    Route::delete('/hapus/{id}', 'AlbumsController@delAlbum');
 
 });
 

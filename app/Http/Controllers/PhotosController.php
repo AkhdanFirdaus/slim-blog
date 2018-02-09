@@ -24,7 +24,7 @@ class PhotosController extends Controller
 
       $foto = $request->file('photo');
       $filename = time() . '.' . $foto->getClientOriginalExtension();
-      Image::make($foto)->fit(250, 200)->save( public_path('/uploads/photos/'. $filename) );
+      Image::make($foto)->save( public_path('/uploads/photos/'. $filename) );
 
       $photo = new Photo;
       $photo->album_id = $request->input('album_id');

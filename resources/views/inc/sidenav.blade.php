@@ -20,8 +20,8 @@
           <span class="caret"></span>
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a type="button" data-toggle="modal" data-target="#loginModal"><span class="fa fa-sign-in"></span> Login</a>
-          <li><a type="button" data-toggle="modal" data-target="#registerModal"><span class="fa fa-address-book"></span> Register</a></li>
+          <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#loginModal"><span class="fa fa-sign-in"></span> Login</a>
+          <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#registerModal"><span class="fa fa-address-book"></span> Register</a></li>
         </ul>
       </div>
     @else
@@ -31,11 +31,11 @@
           <span class="caret"></span>
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <li><a href="/profile"><span class="fa fa-user-circle"></span> Profile</a></li>
-          <li><a href="#"><span class="fa fa-edit"></span> Setting</a></li>
+          <li><a style="color: #333;" href="/profile"><span class="fa fa-user-circle"></span> Profile</a></li>
+          <li><a style="color: #333;" href="#"><span class="fa fa-edit"></span> Setting</a></li>
           <li role="separator" class="divider"></li>
           <li><span class="fa fa-sign-out"></span>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a style="color: #333;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               Logout
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -66,16 +66,23 @@
   <div></div>
 @else
   <div class="navbar-fixed-top text-right container-fluid navigasi">
-    {!! Form::open(['url' => '/post/search']) !!}
-    <div class="form-inline">
-      <div class="form-group">
-        {{Form::text('searchData', '', ['class' => 'form-control', 'placeholder' => 'Mencari Sesuatu?', 'required' => 'required'])}}
-      </div>
-      <div class="form-group">
-      {{Form::submit('Cari', ['class' => 'btn btn-success'])}}
-      </div>
+    <div class="pull-right">
+      <button type="button" id="searchCollapse" class="btn btn-primary">
+        <span class="fa fa-search"></span>
+      </button>
     </div>
-    {!! Form::close() !!}
+    <div id="search">
+      {!! Form::open(['url' => '/post/search']) !!}
+      <div class="form-inline">
+        <div class="form-group">
+          {{Form::text('searchData', '', ['class' => 'form-control', 'placeholder' => 'Mencari Sesuatu?', 'required' => 'required'])}}
+        </div>
+        <div class="form-group">
+        {{Form::submit('Cari', ['class' => 'btn btn-success'])}}
+        </div>
+      </div>
+      {!! Form::close() !!}
+    </div>
   </div>
 @endif
 <!-- Modal -->

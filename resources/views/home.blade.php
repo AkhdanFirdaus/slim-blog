@@ -25,9 +25,9 @@
     </div>
     <div class="row">
       @foreach ($posts as $post)
-        <div class="col-md-4">
+        <div class="col-md-4" style="margin-bottom: 30px;">
   				<div class="post">
-  					<img src="/posts/post_cover/{{$post->post_image}}" alt="">
+  					<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
   					<div class="caption">
   						<div class="text">
   							<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
@@ -39,17 +39,19 @@
       @endforeach
     </div>
     <div class="text-center">
-      <a href="/post" class="btn btn-primary btn-lg">Lihat Selengkapnya</a>
+      <a href="/post" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
     </div>
   </div>
 </section>
 
 <section id="gallery" class="bgimg2">
-  <div class="row">
-    <div class="col-lg-12 text-center">
-        <h2>GALLERY</h2>
-        <hr class="star star-light">
-        <a href="/gallery" class="btn btn-primary">Lihat Selengkapnya</a>
+  <div style="margin-top: 12%;">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+          <h2>GALLERY</h2>
+          <hr class="star star-light">
+          <a href="/gallery" class="btn btn-primary">Lihat Selengkapnya</a>
+      </div>
     </div>
   </div>
 </section>

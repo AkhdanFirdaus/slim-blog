@@ -15,11 +15,11 @@
       <div class="ket">
         <div class="pull-right">
           Writted By: <strong>{{ $post->author }}</strong>
-          <img src="/uploads/avatars/default.jpg" alt="" class="img-circle" width="50px" height="auto">
+          <img src="/uploads/avatars/{{ $post->author_avatar }}" alt="" class="img-circle" width="50px" height="auto">
         </div>
-        <button class="btn btn-primary" onclick="history.go(-1)">
+        <a class="btn btn-primary" onclick="history.go(-1)">
           <span class="fa fa-arrow-left"></span> Kembali
-        </button>
+        </a>
       </div>
     </div>
     <div class="col-md-3">

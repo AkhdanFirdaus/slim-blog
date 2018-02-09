@@ -5,4 +5,8 @@ $(document).ready(function () {
         // $('#wrapper2').toggleClass('active');
     });
 
+    $('#searchCollapse').on('click', function() {
+      $('#search').toggleClass('active');
+    });
+
 });
