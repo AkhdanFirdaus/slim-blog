@@ -14,8 +14,8 @@
       <hr>
       <div class="ket">
         <div class="pull-right">
-          Writted By: <strong>{{ $post->author }}</strong>
-          <img src="/uploads/avatars/{{ $post->author_avatar }}" alt="" class="img-circle" width="50px" height="auto">
+          Writted By: <a href="author/{{$post->author_slug}}"><strong>{{ $post->author }}</strong></a>
+          <img src="/authors/avatars/{{ $post->author_avatar }}" alt="" class="img-circle img-thumbnail" width="50px" height="auto">
         </div>
         <a class="btn btn-primary" onclick="history.go(-1)">
           <span class="fa fa-arrow-left"></span> Kembali

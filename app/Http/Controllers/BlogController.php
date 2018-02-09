@@ -11,6 +11,10 @@ use File;
 
 class BlogController extends Controller
 {
+    // public function __construct()
+    // {
+    //   $this->middleware('auth')->except(['blogIndex', 'showPost', 'search']);
+    // }
     public function blogIndex()
     {
     	$posts = Post::where('created_at', '<=', Carbon::now())
@@ -22,12 +26,24 @@ class BlogController extends Controller
 
     public function showPost($slug)
     {
+        // $data = Post::table('posts')
+        //     ->join('users.id', 'posts.id', '=', 'user_id.post_id')
+        //     ->select('posts.*', 'user.name', 'user.avatar')
+        //     ->get();
 
-    	$post = Post::whereSlug($slug)->firstorFail();
+    	$post = Post::with('users')->whereSlug($slug)->firstorFail();
 
     	return view('blog.post', ['user' => Auth::user()])->withPost($post);
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->searchData;
+        $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search], ['user' => Auth::user()])->with('posts', $posts);
+    }
+
+    // Diproteksi ==============================================
     public function ngepost()
     {
       return view('blog.post-add', ['user' => Auth::user()]);
@@ -39,6 +55,7 @@ class BlogController extends Controller
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
         $post->author = $request->user()->name;
+        $post->author_slug = $request->user()->slug;
         $post->author_avatar = $request->user()->avatar;
 
         $foto = $request->file('post_image');
@@ -50,13 +67,6 @@ class BlogController extends Controller
         $post->save();
 
         return redirect('/post')->with('success', 'Postingan terkirim');
-    }
-
-    public function search(Request $request)
-    {
-        $search = $request->searchData;
-        $posts = Post::where('title', 'LIKE', '%'.$search.'%')->paginate(5);
-        return view('blog.blogIndex', ['msg' => 'Hasil Pencarian: '.$search], ['user' => Auth::user()])->with('posts', $posts);
     }
 
     public function edit($id)

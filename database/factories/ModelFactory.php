@@ -8,6 +8,5 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'content' => join("\n\n", $faker->paragraphs(mt_rand(3, 6))),
         'created_at' => $faker->dateTimeBetween('-1 month', '+3 days'),
         'author' => $faker->sentence(mt_rand(1, 2)),
-        'author_avatar' => 'default.jpg',
     ];
 });

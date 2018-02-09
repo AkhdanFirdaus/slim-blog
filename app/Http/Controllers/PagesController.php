@@ -28,7 +28,12 @@ class PagesController extends Controller
 
   public function profile()
   {
-    return view('auth.profile', ['user' => Auth::user()]);
+    return view('auth.author.profile', ['user' => Auth::user()]);
+  }
+
+  public function setProfile()
+  {
+    return view('auth.author.setting', ['user' => Auth::user()]);
   }
 
   public function updateAvatar(Request $request)
@@ -39,14 +44,14 @@ class PagesController extends Controller
       $filename = time() . '.' . $avatar->getClientOriginalExtension();
 
       if ($user->avatar !== 'default.jpg') {
-                $file = public_path('uploads/avatars/' . $user->avatar);
+                $file = public_path('/authors/avatars/' . $user->avatar);
 
                 if (File::exists($file)) {
                     unlink($file);
                 }
             }
 
-      Image::make($avatar)->fit(200, 200)->save( public_path('/uploads/avatars/' . $filename) );
+      Image::make($avatar)->fit(200, 200)->save( public_path('/authors/avatars/' . $filename) );
 
       $user->avatar = $filename;
       $user->save();
@@ -54,11 +59,8 @@ class PagesController extends Controller
     return redirect('/profile');
   }
 
-  public function updateName(Request $request, $id)
+  public function updateProfile(Request $request, $id)
   {
-    $name = ['name' => $request->name];
-
-    User::where('id', $id)->update($name);
-    return redirect('/profile');
+    
   }
 }

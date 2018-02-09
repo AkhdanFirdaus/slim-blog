@@ -18,11 +18,17 @@ route::group(['prefix' => '/'], function(){
 
   Route::get('/', 'PagesController@beranda')->name('beranda');
 
-  Route::get('/profile', 'PagesController@profile');
+  route::group(['middleware' => 'auth'], function(){
 
-  Route::post('/profile', 'PagesController@updateAvatar');
+    Route::get('/profile', 'PagesController@profile');
 
-  Route::post('/profile/{id}', 'PagesController@updateName');
+    Route::get('/profile/setting', 'PagesController@setProfile');
+
+    Route::post('/profile/setting', 'PagesController@updateAvatar');
+
+    Route::post('/profile/setting/{id}', 'PagesController@updateProfile');
+
+  });
 
 });
 
@@ -31,17 +37,17 @@ Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex');
 
-  Route::get('/tulis', 'BlogController@ngepost');
+  Route::get('/tulis', 'BlogController@ngepost')->middleware('auth');
 
-  Route::post('/tulis', 'BlogController@posting');
+  Route::post('/tulis', 'BlogController@posting')->middleware('auth');
 
   Route::get('/{slug}', 'BlogController@showPost');
 
-  Route::get('/edit/{id}', 'BlogController@edit');
+  Route::get('/edit/{id}', 'BlogController@edit')->middleware('auth');
 
-  Route::post('/edit/{id}', 'BlogController@update');
+  Route::post('/edit/{id}', 'BlogController@update')->middleware('auth');
 
-  Route::delete('/hapus/{id}', 'BlogController@hapus');
+  Route::delete('/hapus/{id}', 'BlogController@hapus')->middleware('auth');
 
   Route::post('/search', 'BlogController@search');
 
@@ -52,18 +58,21 @@ Route::group(['prefix' => '/gallery'], function(){
 
     Route::get('/', 'AlbumsController@gallery');
 
-    Route::get('/create', 'AlbumsController@create');
-
-    Route::post('/create', 'AlbumsController@store');
-
     Route::get('/{id}', 'AlbumsController@show');
 
-    Route::delete('/hapus/{id}', 'AlbumsController@delAlbum');
+    route::group(['middleware' => 'auth'], function(){
 
+      Route::get('/create', 'AlbumsController@create');
+
+      Route::post('/create', 'AlbumsController@store');
+
+      Route::delete('/hapus/{id}', 'AlbumsController@delAlbum');
+
+    });
 });
 
 // Route untuk foto
-Route::group(['prefix' => '/gallery/photos'], function(){
+Route::group(['prefix' => '/gallery/photos', 'middleware' => 'auth'], function(){
 
   Route::get('/create/{id}', 'PhotosController@create');
 

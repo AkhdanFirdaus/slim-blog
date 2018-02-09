@@ -9,9 +9,9 @@
     {{-- sidebar Header --}}
     <div class="sidebar-header">
       @guest
-        <img src="/uploads/avatars/default.jpg" alt="" class="img-circle">
+        <img src="/authors/avatars/default.jpg" alt="" class="img-circle img-thumbnail">
       @else
-        <img src="/uploads/avatars/{{ $user->avatar }}" alt="" class="img-circle">
+        <img src="/authors/avatars/{{ $user->avatar }}" alt="" class="img-circle img-thumbnail">
       @endguest
     @guest
       <div class="dropdown">
@@ -32,7 +32,7 @@
         </div>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <li><a style="color: #333;" href="/profile"><span class="fa fa-user-circle"></span> Profile</a></li>
-          <li><a style="color: #333;" href="#"><span class="fa fa-edit"></span> Setting</a></li>
+          <li><a style="color: #333;" href="/profile/setting"><span class="fa fa-edit"></span> Setting</a></li>
           <li role="separator" class="divider"></li>
           <li><span class="fa fa-sign-out"></span>
             <a style="color: #333;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -87,6 +87,6 @@
 @endif
 <!-- Modal -->
 <div class="permodalan">
-      @include('auth.login')
-      @include('auth.register')
+      @include('auth.login-modal')
+      @include('auth.register-modal')
 </div>

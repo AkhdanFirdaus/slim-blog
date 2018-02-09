@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
-{	
+{
 	protected $dates = ['created_at'];
 
 	public function setTitleAttribute($value)
@@ -17,4 +17,9 @@ class Post extends Model
 		  $this->attributes['slug'] = str_slug($value);
 		}
 	}
+
+	public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
