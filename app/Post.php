@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->belongsTo('App\User', 'author_id');
     }
+
+	public function category()
+	{
+		return $this->belongsTo('App\Category');
+	}
 }

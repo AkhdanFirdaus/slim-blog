@@ -40,7 +40,9 @@ class AlbumsController extends Controller
 
       $album->save();
 
-      return redirect('/gallery')->with('success', 'Album Created');
+      Session::flash('success', 'Album telah dibuat');
+
+      return redirect('/gallery');
     }
 
     public function show($id)
@@ -63,6 +65,8 @@ class AlbumsController extends Controller
           }
       }
 
-      return redirect('/gallery')->with('hapus', 'Album berhasil dihapus');
+      Session::flash('success', 'Album berhasil dihapus');
+
+      return redirect('/gallery');
     }
 }

@@ -12,17 +12,16 @@
     <link rel="stylesheet" href="{{'/css/font-awesome.min.css'}}">
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/customscript.js') }}"></script>
-
 </head>
 <body id="page-top">
-<div class="wrapper">
-    {{-- sidebar --}}
-    @include('inc.sidenav')
-    {{-- content --}}
-    <div id="wrapper2">
-      @yield('homecontent')
-      @include('inc.footer')
-    </div>    
-</div>
+    <div class="wrapper">
+        {{-- sidebar --}}
+        @include('inc.sidenav')
+        {{-- content --}}
+        <div id="wrapper2">
+          @yield('homecontent')
+          @include('inc.footer')
+        </div>
+    </div>
 </body>
 </html>

@@ -13,6 +13,11 @@
 
 </head>
 <body id="page-top">
-  @yield('autentikasi')
+
+    <div class="container">
+        @include('inc.pesan')
+    </div>
+
+    @yield('autentikasi')
 </body>
 </html>

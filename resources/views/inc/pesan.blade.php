@@ -1,25 +1,19 @@
+@if (Session::has('success'))
+	<div class="alert alert-success" role="alert">
+		<strong>Success:</strong> {{Session::get('success')}}
+	</div>
+@endif
+
+@if (Session::has('danger'))
+	<div class="alert alert-danger" role="alert">
+		<strong>Success:</strong> {{Session::get('danger')}}
+	</div>
+@endif
+
 @if (count($errors) > 0)
 	@foreach ($errors->all() as $error)
 		<div class="alert alert-danger">
-			{{$error}}
+			<li>{{$error}}</li>
 		</div>
 	@endforeach
-@endif
-
-@if (session('success'))
-	<div class="alert alert-success">
-		{{session('success')}}
-	</div>
-@endif
-
-@if (session('hapus'))
-	<div class="alert alert-danger">
-		{{session('hapus')}}
-	</div>
-@endif
-
-@if (session('error'))
-	<div class="alert alert-danger">
-		{{session('error')}}
-	</div>
 @endif

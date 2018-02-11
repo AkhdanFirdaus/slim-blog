@@ -82,26 +82,34 @@
         <hr class="star">
     </div>
   </div>
-  <div class="col-lg-8 col-lg-offset-2">
-    {!! Form::open(['url' => '']) !!}
+  <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        {!! Form::open(['url' => '']) !!}
 
-    <div class="form-group">
-  		{{Form::text('Nama', '', ['class' => 'form-control', 'placeholder' => 'Nama', 'required' => 'required'])}}
-    </div>
-    <div class="form-group">
-      {{Form::text('E-Mail', '', ['class' => 'form-control', 'placeholder' => 'Alamat E-Mail', 'required' => 'required'])}}
-    </div>
-    <div class="form-group">
-      {{Form::text('Phone', '', ['class' => 'form-control', 'placeholder' => 'Nomor Telephone', 'required' => 'required'])}}
-    </div>
-    <div class="form-group">
-      {{Form::textarea('Pesan', '', ['class' => 'form-control', 'placeholder' => 'Pesan', 'required' => 'required'])}}
-    </div>
-    <div class="form-group text-right">
-      {{Form::submit('Send', ['class' => 'btn btn-success'])}}
-    </div>
+        <div class="form-group">
+      		{{Form::text('Subjek', '', ['class' => 'form-control', 'placeholder' => 'Subjek', 'required' => 'required'])}}
+        </div>
 
-    {!!Form::close() !!}
+        <div class="form-group">
+          {{Form::textarea('Pesan', '', ['class' => 'form-control', 'placeholder' => 'Pesan', 'required' => 'required'])}}
+        </div>
+
+        <div class="form-group">
+      		{{Form::text('Nama', '', ['class' => 'form-control', 'placeholder' => 'Nama', 'required' => 'required'])}}
+        </div>
+        <div class="form-group">
+          {{Form::text('E-Mail', '', ['class' => 'form-control', 'placeholder' => 'Alamat E-Mail', 'required' => 'required'])}}
+        </div>
+        <div class="form-group">
+          {{Form::text('Phone', '', ['class' => 'form-control', 'placeholder' => 'Nomor Telephone', 'required' => 'required'])}}
+        </div>
+
+        <div class="form-group text-right">
+          {{Form::submit('Send', ['class' => 'btn btn-success'])}}
+        </div>
+
+        {!!Form::close() !!}
+      </div>
   </div>
 </section>
 

@@ -4,6 +4,10 @@
 
 @include('inc.judul')
 
+<div class="container">
+    @include('inc.pesan')
+</div>
+
 @yield('blogcontent')
 
 @endsection

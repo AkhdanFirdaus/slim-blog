@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Category;
 use Carbon\Carbon;
-use Image;
 use Auth;
+use Image;
 use File;
+use Session;
 
 class BlogController extends Controller
 {
@@ -42,7 +44,9 @@ class BlogController extends Controller
     // Diproteksi ==============================================
     public function ngepost()
     {
-      return view('blog.post-add', ['user' => Auth::user()]);
+        $categories = Category::pluck('name', 'id');
+
+        return view('blog.post-add', ['user' => Auth::user()])->withCategories($categories);
     }
 
     public function posting(Request $request)
@@ -61,17 +65,21 @@ class BlogController extends Controller
         }
 
         $post->author_id  = $request->user()->id;
+        $post->category_id = $request->input('category_id');
 
         $post->save();
 
-        return redirect('/post')->with('success', 'Postingan terkirim');
+        Session::flash('success', 'Postingan terkirim');
+
+        return redirect('/post');
     }
 
     public function edit($id)
     {
       $post = Post::find($id);
+      $categories = Category::pluck('name', 'id');
 
-      return view('blog.post-edit', ['user' => Auth::user()])->withPost($post);
+      return view('blog.post-edit', ['user' => Auth::user()])->withPost($post)->withCategories($categories);
     }
 
     public function update(Request $request, $id)
@@ -83,7 +91,9 @@ class BlogController extends Controller
 
       Post::where('id', $id)->update($post);
 
-      return redirect('/post')->with('success', 'Pesan Telah di Ubah');
+      Session::flash('success', 'Pesan Telah di Ubah');
+
+      return redirect('/post');
     }
 
     public function hapus($id)
@@ -99,12 +109,9 @@ class BlogController extends Controller
           }
       }
 
-      return redirect('/post')->with('hapus', 'post telah dihapus');
+      Session::flash('danger', 'Pesan Telah di hapus');
 
-    }
+      return redirect('/post');
 
-    public function posts()
-    {
-        return $this->belogsToMany('App\User', 'post', 'user_id');
     }
 }

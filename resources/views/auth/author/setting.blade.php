@@ -10,23 +10,25 @@
           <div class="col-md-6">
             <div class="well well-lg">
                 <h3 class="text-center">Update Information</h3>
-                {!! Form::open(['url' => '/profile/setting/{{$user->id}}']) !!}
+                {!! Form::open(['url' => '/profile/setting/'.Auth::user()->id]) !!}
 
                     <div class="form-group">
-                        {{Form::text('Job', '', ['class' => 'form-control', 'placeholder' => 'Pekerjaan Anda'])}}
+                        {{Form::text('Job', $user->job, ['class' => 'form-control', 'placeholder' => 'Pekerjaan Anda'])}}
                     </div>
 
                     <div class="form-group">
-                        {{Form::text('Quote', '', ['class' => 'form-control', 'placeholder' => 'Quote Favorit Anda'])}}
+                        {{Form::text('Quote', $user->quote, ['class' => 'form-control', 'placeholder' => 'Quote Favorit Anda'])}}
                     </div>
 
                     <div class="form-group">
-                        {{Form::textarea('About', '', ['class' => 'form-control', 'placeholder' => 'Tentang Anda'])}}
+                        {{Form::textarea('About', $user->about, ['class' => 'form-control', 'placeholder' => 'Tentang Anda'])}}
+                    </div>
+
+                    <div class="form-group">
+                        {{Form::submit('Update Information', ['class' => 'btn btn-sm btn-primary'])}}
                     </div>
 
                 {!! Form::close() !!}
-                <br><br>
-                <input type="submit" class="btn btn-sm btn-primary" value="Update Information">
               </form>
             </div>
           </div>

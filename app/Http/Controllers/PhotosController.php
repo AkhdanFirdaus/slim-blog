@@ -35,7 +35,9 @@ class PhotosController extends Controller
 
       $photo->save();
 
-      return redirect('/gallery'.'/'. $request->input('album_id'))->with('success', 'Photo Uploaded');
+      Session::flash('success', 'Foto telah di upload');
+
+      return redirect('/gallery'.'/'. $request->input('album_id'));
     }
 
     // public function show($id)

@@ -18,6 +18,8 @@ route::group(['prefix' => '/'], function(){
 
   Route::get('/', 'PagesController@beranda')->name('beranda');
 
+  Route::get('/author/{slug}', 'PagesController@authorProfile');
+
   route::group(['middleware' => 'auth'], function(){
 
     Route::get('/profile', 'PagesController@profile');
@@ -37,17 +39,22 @@ Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex');
 
-  Route::get('/tulis', 'BlogController@ngepost')->middleware('auth');
+  Route::group(['middleware' => 'auth'], function(){
 
-  Route::post('/tulis', 'BlogController@posting')->middleware('auth');
+      Route::get('/tulis', 'BlogController@ngepost');
+
+      Route::post('/tulis', 'BlogController@posting');
+
+      Route::get('/edit/{id}', 'BlogController@edit');
+
+      Route::post('/edit/{id}', 'BlogController@update');
+
+      Route::delete('/hapus/{id}', 'BlogController@hapus');
+
+      Route::resource('/categories', 'CategoryController', ['except' => 'create']);
+  });
 
   Route::get('/{slug}', 'BlogController@showPost');
-
-  Route::get('/edit/{id}', 'BlogController@edit')->middleware('auth');
-
-  Route::post('/edit/{id}', 'BlogController@update')->middleware('auth');
-
-  Route::delete('/hapus/{id}', 'BlogController@hapus')->middleware('auth');
 
   Route::post('/search', 'BlogController@search');
 

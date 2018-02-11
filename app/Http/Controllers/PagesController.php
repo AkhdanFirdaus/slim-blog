@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Auth;
 use Image;
 use File;
+use Session;
 
 class PagesController extends Controller
 {
@@ -23,7 +24,7 @@ class PagesController extends Controller
       ->orderBy('created_at', 'desc')
       ->paginate(3);
 
-    return view('home', ['user' => Auth::user()])->with('posts', $posts);
+    return view('home', ['user' => Auth::user()])->withPosts($posts);
   }
 
   public function profile()
@@ -56,11 +57,31 @@ class PagesController extends Controller
       $user->avatar = $filename;
       $user->save();
     }
+
+    Session::flash('success', 'Foto Profil telah diubah');
+
     return redirect('/profile');
   }
 
   public function updateProfile(Request $request, $id)
   {
+      $user = [
+          'job' => $request->input('Job'),
+          'quote' => $request->input('Quote'),
+          'about' => $request->input('About')
+      ];
 
+      Auth::user()->where('id', $id)->update($user);
+
+      Session::flash('success', 'Informasi Akun Telah di Ubah');
+
+      return redirect('/profile');
+  }
+
+  public function authorProfile($slug)
+  {
+  	$user = User::whereSlug($slug)->firstorFail();
+
+  	return view('auth.author.author-profile')->withUser($user);
   }
 }

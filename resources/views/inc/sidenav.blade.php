@@ -52,11 +52,16 @@
       <br>
       @auth ('web')
         <a href="/post/tulis">Tulis</a>
+        <a href="{{ route('categories.index') }}">Kategori</a>
       @endauth
-      <a href="/#post">Post</a>
-      <a href="/#gallery">Gallery</a>
-      <a href="/#about">About</a>
-      <a href="/#contact">Contact</a>
+      @if (Request::is('/'))
+          <a href="/#post">Post</a>
+          <a href="/#gallery">Gallery</a>
+          <a href="/#about">About</a>
+          <a href="/#contact">Contact</a>
+      @else
+          <a href="/">Beranda</a>
+      @endif
     </div>
   </nav>
 </div>

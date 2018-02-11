@@ -15,6 +15,12 @@
 		{{Form::label('judul', 'Judul')}}
 		{{Form::text('Judul', $post->title, ['class' => 'form-control', 'placeholder' => 'Pastikan judul menarik', 'required' => 'required'])}}
 	</div>
+
+	<div class="form-group">
+		{{Form::label('category_id', 'Categories')}}
+		{!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}﻿
+	</div>
+
 	<div class="form-group">
 		{{Form::label('konten', 'Konten')}}
 		{{Form::textarea('Konten', $post->content, ['id' => 'editor', 'class' => 'form-control', 'placeholder' => 'Tuangkan apa yang ingin anda tuliskan', 'required' => 'required'])}}

@@ -14,7 +14,7 @@
       <hr>
       <div class="ket">
         <div class="pull-right">
-          Writted By: <a href="author/{{ $post->authors['slug'] }} "><strong>{{ $post->authors['name'] }} </strong></a>
+          Writted By: <a href="/author/{{ $post->authors['slug'] }} "><strong>{{ $post->authors['name'] }} </strong></a>
           <img src="/authors/avatars/{{ $post->authors['avatar'] }} " alt="" class="img-circle img-thumbnail" width="50px" height="auto">
         </div>
         <a class="btn btn-primary" onclick="history.go(-1)">
@@ -50,6 +50,10 @@
         </div>
         @endauth
       </div>
+      <blockquote cite="http://">
+          <p>{{ $post->category->name }}</p>
+          <footer>Category</footer>
+      </blockquote>
 
       {{-- @foreach ($postrandoms as $postrandom)
         <dl>

@@ -19,7 +19,7 @@
         <div class="jumbotron">
             <p>{{$user->about}}</p>
         </div>
-    </section>
+    </section>    
     <section>
         <hr>
         <footer class="text-center">
