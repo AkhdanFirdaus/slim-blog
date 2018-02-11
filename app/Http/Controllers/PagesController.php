@@ -61,6 +61,6 @@ class PagesController extends Controller
 
   public function updateProfile(Request $request, $id)
   {
-    
+
   }
 }

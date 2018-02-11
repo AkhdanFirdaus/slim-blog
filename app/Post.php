@@ -18,8 +18,8 @@ class Post extends Model
 		}
 	}
 
-	public function users()
+	public function authors()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'author_id');
     }
 }

@@ -31,7 +31,7 @@
   					<div class="caption">
   						<div class="text">
   							<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
-  							<p>{{ $post->author }} - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
+  							<p><a href="/author/{{ $post->authors['slug'] }} ">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
   						</div>
   					</div>
   				</div>

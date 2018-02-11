@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use Carbon\Carbon;
 use Image;
 use Auth;
@@ -26,12 +27,7 @@ class BlogController extends Controller
 
     public function showPost($slug)
     {
-        // $data = Post::table('posts')
-        //     ->join('users.id', 'posts.id', '=', 'user_id.post_id')
-        //     ->select('posts.*', 'user.name', 'user.avatar')
-        //     ->get();
-
-    	$post = Post::with('users')->whereSlug($slug)->firstorFail();
+    	$post = Post::whereSlug($slug)->firstorFail();
 
     	return view('blog.post', ['user' => Auth::user()])->withPost($post);
     }
@@ -54,15 +50,17 @@ class BlogController extends Controller
         $post = new Post;
         $post->title = $request->input('Judul');
         $post->content = $request->input('Konten');
-        $post->author = $request->user()->name;
-        $post->author_slug = $request->user()->slug;
-        $post->author_avatar = $request->user()->avatar;
 
-        $foto = $request->file('post_image');
-        $filename = time() . '.' . $foto->getClientOriginalExtension();
-        Image::make($foto)->save( public_path('/posts/post_cover/' . $filename) );
+        if ($request->hasFile('post_image'))
+        {
+            $foto = $request->file('post_image');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            Image::make($foto)->save( public_path('/posts/post_cover/' . $filename) );
 
-        $post->post_image = $filename;
+            $post->post_image = $filename;
+        }
+
+        $post->author_id  = $request->user()->id;
 
         $post->save();
 
@@ -103,5 +101,10 @@ class BlogController extends Controller
 
       return redirect('/post')->with('hapus', 'post telah dihapus');
 
+    }
+
+    public function posts()
+    {
+        return $this->belogsToMany('App\User', 'post', 'user_id');
     }
 }
