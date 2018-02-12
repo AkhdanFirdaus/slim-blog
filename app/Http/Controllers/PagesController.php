@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Album;
+use App\Category;
 use Carbon\Carbon;
 use Auth;
 use Image;
@@ -24,7 +26,10 @@ class PagesController extends Controller
       ->orderBy('created_at', 'desc')
       ->paginate(3);
 
-    return view('home', ['user' => Auth::user()])->withPosts($posts);
+      $albums = Album::inRandomOrder()
+        ->paginate(3);
+
+      return view('home', ['user' => Auth::user()])->withPosts($posts)->withAlbums($albums);
   }
 
   public function profile()
@@ -34,7 +39,7 @@ class PagesController extends Controller
 
   public function setProfile()
   {
-    return view('auth.author.setting', ['user' => Auth::user()]);
+      return view('auth.author.setting', ['user' => Auth::user()]);
   }
 
   public function updateAvatar(Request $request)
@@ -80,8 +85,9 @@ class PagesController extends Controller
 
   public function authorProfile($slug)
   {
-  	$user = User::whereSlug($slug)->firstorFail();
+  	$user = User::whereSlug($slug)->orderBy('created_at', 'desc')->firstorFail();
+    $categories = Category::all();
 
-  	return view('auth.author.author-profile')->withUser($user);
+  	return view('auth.author.author-profile')->withUser($user)->withCategories($categories);
   }
 }

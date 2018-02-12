@@ -26,16 +26,16 @@
     <div class="row">
       @foreach ($posts as $post)
         <div class="col-md-4" style="margin-bottom: 30px;">
-  				<div class="post">
-  					<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
-  					<div class="caption">
-  						<div class="text">
-  							<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
-  							<p><a href="/author/{{ $post->authors['slug'] }} ">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
-  						</div>
-  					</div>
-  				</div>
-  			</div>
+    		<div class="post">
+    			<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
+    			<div class="caption">
+    				<div class="text">
+    					<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
+    					<p><a href="/author/{{ $post->authors['slug'] }} ">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
+    				</div>
+    			</div>
+    		</div>
+		</div>
       @endforeach
     </div>
     <div class="text-center">
@@ -45,15 +45,38 @@
 </section>
 
 <section id="gallery" class="bgimg2">
-  <div style="margin-top: 12%;">
     <div class="row">
-      <div class="col-lg-12 text-center">
-          <h2>GALLERY</h2>
-          <hr class="star star-light">
-          <a href="/gallery" class="btn btn-primary">Lihat Selengkapnya</a>
-      </div>
+        <div class="col-lg-12 text-center">
+            <h2>GALLERY</h2>
+            <hr class="star star-light">
+        </div>
     </div>
-  </div>
+    <div class="row">
+        @if (count($albums) > 0)
+            @foreach ($albums as $key => $album)
+                <div class="col-md-4">
+                    <div class="post">
+            			<a href="/gallery/{{$album->id}}}"><img src="/uploads/album_covers/{{$album->cover_image}}" alt=""></a>
+            			<div class="caption">
+            				<div class="text">
+            					<strong><h3><a href="/gallery/{{$album->id}}">{{$album->name}}</a></h3></strong>
+            					<p><em>({{ $post->created_at->format('M jS Y') }})</em></p>
+            				</div>
+            			</div>
+            		</div>
+                </div>
+            @endforeach
+        @else
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <div class="alert alert-info">
+                    <h3>Album Kosong</h3>
+                </div>
+            </div>
+        @endif
+    </div>
+    <div class="col-md-4 col-md-offset-4 text-center">
+        <a href="/gallery" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
+    </div>
 </section>
 
 <section id="about">

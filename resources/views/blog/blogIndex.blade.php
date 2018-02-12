@@ -2,7 +2,6 @@
 
 @section('blogcontent')
 	<div class="container">
-			@include('inc.pesan')
 			<h5>
 				@if (Request::is('post/search'))
 					<h2>

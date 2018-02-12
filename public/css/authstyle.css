@@ -26,3 +26,17 @@ body {
     width: 200px;
     height: 200px;
 }
+img.media-object{
+    width: 64px;
+    height: 64px;
+}
+/* footer */
+#footer{
+	background-color: #2C3E50;
+	color: #fff;
+	padding: 20px;
+}
+
+#footer i{
+	color: #C54641;
+}

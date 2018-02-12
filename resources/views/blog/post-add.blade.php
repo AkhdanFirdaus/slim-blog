@@ -1,10 +1,7 @@
 @extends('layouts.appblog')
 
 @section('blogcontent')
-	<div class="container">
-	<a class="btn btn-primary" onclick="history.go(-1)">
-		<span class="fa fa-arrow-left"></span> Kembali
-	</a>
+<div class="container">
 	<h1>Ingin menulis sesuatu?</h1>
 
 	{!! Form::open(['url' => '/post/tulis', 'enctype' => 'multipart/form-data', 'method' => 'post']) !!}
@@ -33,16 +30,16 @@
 		{{Form::reset('Reset', ['class' => 'btn btn-danger'])}}
 	</div>
 	{!! Form::close() !!}
-	</div>
+</div>
 
-	<!-- Scripts -->
-	<script src="{{ asset('js/app.js') }}"></script>
-	<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-	<script>
-	 var editor = document.getElementById("editor");
-		 CKEDITOR.replace(editor,{
-		 language:'en-gb'
-	 });
-	 CKEDITOR.config.allowedContent = true;
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+<script>
+ var editor = document.getElementById("editor");
+	 CKEDITOR.replace(editor,{
+	 language:'en-gb'
+ });
+ CKEDITOR.config.allowedContent = true;
 </script>
 @endsection

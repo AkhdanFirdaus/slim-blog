@@ -5,9 +5,7 @@
 	<a class="btn btn-primary" onclick="history.go(-1)">
 		<span class="fa fa-arrow-left"></span> Kembali
 	</a>
-	<h1>Ingin menulis sesuatu?</h1>
-
-	@include('inc.pesan')
+	<h1>Edit Post?</h1>
 
 	{!! Form::open(['url' => '/post/edit/'.$post->id, 'method' => 'post']) !!}
 

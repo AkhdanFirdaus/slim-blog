@@ -39,6 +39,8 @@ Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex');
 
+  Route::resource('/categories', 'CategoryController', ['except' => 'create']);
+
   Route::group(['middleware' => 'auth'], function(){
 
       Route::get('/tulis', 'BlogController@ngepost');
@@ -51,7 +53,6 @@ Route::group(['prefix' => '/post'], function(){
 
       Route::delete('/hapus/{id}', 'BlogController@hapus');
 
-      Route::resource('/categories', 'CategoryController', ['except' => 'create']);
   });
 
   Route::get('/{slug}', 'BlogController@showPost');

@@ -86,7 +86,8 @@ class BlogController extends Controller
     {
       $post = [
         'title' => $request->input('Judul'),
-        'content' => $request->input('Konten')
+        'content' => $request->input('Konten'),
+        'category_id' => $request->input('category_id')
       ];
 
       Post::where('id', $id)->update($post);

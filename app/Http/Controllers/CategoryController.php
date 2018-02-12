@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
     /**
      * Display a listing of the resource.
@@ -21,6 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+
         return view('blog.blogCategory.indexCategory', ['user' => Auth::user()])->withCategories($categories);
     }
 
@@ -54,9 +55,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $categories = Category::whereSlug($slug)->firstorFail();
+
+        $category = Category::all();
+
+        return view('blog.blogCategory.indexCategory', ['user' => Auth::user()])->withCategories($categories)->withCategory($category);
     }
 
     /**

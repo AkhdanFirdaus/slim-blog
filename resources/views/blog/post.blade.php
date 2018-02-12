@@ -51,7 +51,7 @@
         @endauth
       </div>
       <blockquote cite="http://">
-          <p>{{ $post->category->name }}</p>
+          <p><a href="/post/categories/{{$post->category->slug}}">{{ $post->category->name }}</a></p>
           <footer>Category</footer>
       </blockquote>
 
