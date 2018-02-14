@@ -26,13 +26,13 @@ route::group(['prefix' => '/'], function(){
 
   route::group(['middleware' => 'auth'], function(){
 
-    Route::get('/profile', 'PagesController@profile');
+    Route::get('/profile', 'PagesController@profile')->name('profile.index');
 
-    Route::get('/profile/setting', 'PagesController@setProfile');
+    Route::get('/profile/setting', 'PagesController@setProfile')->name('profile.set');
 
-    Route::post('/profile/setting', 'PagesController@updateAvatar');
+    Route::post('/profile/setting', 'PagesController@updateAvatar')->name('profile.avatar');
 
-    Route::post('/profile/setting/{id}', 'PagesController@updateProfile');
+    Route::post('/profile/setting/{id}', 'PagesController@updateProfile')->name('profile.update');
 
   });
 
@@ -42,6 +42,8 @@ route::group(['prefix' => '/'], function(){
 Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex');
+
+  Route::post('comments/{slug}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
 
   Route::group(['middleware' => 'auth'], function(){
 

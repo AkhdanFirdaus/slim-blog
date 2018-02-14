@@ -22,9 +22,7 @@
     </section>
     <section>
         <h2 class="text-center">Posts
-            @foreach ($ups as $key => $up)
-                <span class="badge">{{ $up->posts_count }}</span>
-            @endforeach
+            <span class="badge">{{ $user->posts()->count() }}</span>
             | <small><a href="/post/tulis" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Tulis</a></small></h2>
         <table class="table table-hover">
             <tr>

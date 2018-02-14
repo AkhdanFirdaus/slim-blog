@@ -35,8 +35,7 @@ class PagesController extends Controller
 
   public function profile()
   {
-      $ups = User::withCount('posts')->get();
-      return view('auth.author.profile', ['user' => Auth::user()])->withUps($ups);
+      return view('auth.author.profile', ['user' => Auth::user()]);
   }
 
   public function setProfile()

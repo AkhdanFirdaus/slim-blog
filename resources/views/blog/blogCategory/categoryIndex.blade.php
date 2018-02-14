@@ -18,9 +18,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $key => $category)
+                    @foreach ($categories as $index => $category)
                         <tr>
-                            <th>{{ $category->id }}</th>
+                            <th>{{ $index+1 }}</th>
                             <td><a href="categories/{{ $category->slug }}" class="label label-primary">{{ $category->name }}</a></td>
                             <td>{{ $category->posts_count }}</td>
                         </tr>

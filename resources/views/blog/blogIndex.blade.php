@@ -34,8 +34,17 @@
 				<div class="post thumbnail">
 					<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
 					<div class="caption">
-						<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
+						<strong>
+							<h3>
+								<a href="/post/{{$post->slug}}">{{ $post->title }}</a>
+							</h3>
+						</strong>
 						<p><a href="/author/{{ $post->authors['slug'] }}">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
+						<div>
+							@foreach ($post->tags as $key => $tag)
+								<a href="{{ route('tags.show', $tag->slug )}}"><span class="label label-default">{{ $tag->name }}</span></a>
+							@endforeach
+						</div>
 					</div>
 				</div>
 			</div>

@@ -30,8 +30,17 @@
     			<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
     			<div class="caption">
     				<div class="text">
-    					<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>
+                        <strong>
+							<h3>
+								<a href="/post/{{$post->slug}}">{{ $post->title }}</a>
+							</h3>
+						</strong>
     					<p><a href="/author/{{ $post->authors['slug'] }} ">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
+                        <div>
+							@foreach ($post->tags as $key => $tag)
+								<a href="{{ route('tags.show', $tag->slug )}}"><span class="label label-default">{{ $tag->name }}</span></a>
+							@endforeach
+						</div>
     				</div>
     			</div>
     		</div>
@@ -110,25 +119,22 @@
         {!! Form::open(['url' => '']) !!}
 
         <div class="form-group">
+            {{Form::label('E-Mail', 'E-Mail')}}
+            {{Form::text('E-Mail', '', ['class' => 'form-control', 'placeholder' => 'Alamat E-Mail', 'required' => 'required'])}}
+        </div>
+
+        <div class="form-group">
+            {{Form::label('Subjek', 'Subjek')}}
       		{{Form::text('Subjek', '', ['class' => 'form-control', 'placeholder' => 'Subjek', 'required' => 'required'])}}
         </div>
 
         <div class="form-group">
-          {{Form::textarea('Pesan', '', ['class' => 'form-control', 'placeholder' => 'Pesan', 'required' => 'required'])}}
-        </div>
-
-        <div class="form-group">
-      		{{Form::text('Nama', '', ['class' => 'form-control', 'placeholder' => 'Nama', 'required' => 'required'])}}
-        </div>
-        <div class="form-group">
-          {{Form::text('E-Mail', '', ['class' => 'form-control', 'placeholder' => 'Alamat E-Mail', 'required' => 'required'])}}
-        </div>
-        <div class="form-group">
-          {{Form::text('Phone', '', ['class' => 'form-control', 'placeholder' => 'Nomor Telephone', 'required' => 'required'])}}
+            {{Form::label('Pesan', 'Pesan')}}
+            {{Form::textarea('Pesan', '', ['class' => 'form-control', 'placeholder' => 'Pesan', 'required' => 'required'])}}
         </div>
 
         <div class="form-group text-right">
-          {{Form::submit('Send', ['class' => 'btn btn-success'])}}
+            {{Form::submit('Send', ['class' => 'btn btn-success'])}}
         </div>
 
         {!!Form::close() !!}

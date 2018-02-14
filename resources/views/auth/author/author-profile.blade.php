@@ -23,39 +23,28 @@
     </section>
     <section>
         <div class="col-md-8">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tulisan Saya</h3>
+            <h2>Tulisan Saya <span class="badge">{{ $user->posts()->count() }}</span></h2>
+            @foreach ($user->posts as $index => $post)
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="/post/{{ $post->slug }}">
+                            <img class="media-object" src="/posts/post_cover/{{ $post->post_image }}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body media-middle">
+                        <h4 class="media-heading">{{ $post->title }}</h4>
+                        <p>
+                            @foreach ($post->tags as $key => $tag)
+                                <span class="label label-default">{{ $tag->name }}</span>
+                            @endforeach
+                        </p>
+                    </div>
+                    <div class="media-right media-middle text-center">
+                        <span class="label label-primary">{{ $post->category->name }}</span>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <ul class="list-group">
-                    @foreach ($user->posts as $index => $post)
-                        <li class="list-group-item">
-
-                            <div class="media">
-                                <div class="media-left media-middle">
-                                    <a href="/post/{{ $post->slug }}">
-                                        <img class="media-object" src="/posts/post_cover/{{ $post->post_image }}" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body media-middle">
-                                    <h4 class="media-heading">{{ $post->title }}</h4>
-                                    <p>Tags
-                                        @foreach ($post->tags as $key => $tag)
-                                            <span class="label label-primary">{{ $tag->name }}</span>
-                                        @endforeach
-                                    </p>
-                                </div>
-                                <div class="media-right media-middle text-center">
-                                    <span class="label label-primary">{{ $post->category->name }}</span>
-                                    <span class="badge">{{$index+1}}</span>
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-                    </ul>
-                </div>
-            </div>
+                <hr>
+            @endforeach
             <a onclick="history.go(-1)" class="btn btn-primary"><span class="fa fa-chevron-left"></span></a>
             <a href="/" class="btn btn-primary"><span class="fa fa-home"></span></a>
         </div>

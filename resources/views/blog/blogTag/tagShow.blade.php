@@ -32,9 +32,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tag->posts as $key => $post)
+                    @foreach ($tag->posts as $index => $post)
                         <tr>
-                            <th>{{ $post->id }}</th>
+                            <th>{{ $index+1 }}</th>
                             <td>{{ $post->title }}</td>
                             <td><span class="label label-primary">{{ $post->Category->name }}</span></td>
                             <td>

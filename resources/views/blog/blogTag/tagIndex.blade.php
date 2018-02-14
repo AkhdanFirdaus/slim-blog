@@ -16,9 +16,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tags as $key => $tag)
+                    @foreach ($tags as $index => $tag)
                         <tr>
-                            <th>{{ $tag->id }}</th>
+                            <th>{{ $index+1 }}</th>
                             <td><a href="{{ route('tags.show', $tag->slug) }}" class="label label-default">{{ $tag->name }}</a></td>
                             <td>{{ $tag->posts_count }}</td>
                         </tr>
