@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
     }
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::withCount('posts')->get();
 
-        return view('blog.blogCategory.indexCategory', ['user' => Auth::user()])->withCategories($categories);
+        return view('blog.blogCategory.categoryIndex', ['user' => Auth::user()])->withCategories($categories);
     }
 
     /**
@@ -59,9 +59,9 @@ class CategoryController extends Controller
     {
         $categories = Category::whereSlug($slug)->firstorFail();
 
-        $category = Category::all();
+        $category = Category::withCount('posts')->get();
 
-        return view('blog.blogCategory.indexCategory', ['user' => Auth::user()])->withCategories($categories)->withCategory($category);
+        return view('blog.blogCategory.categoryIndex', ['user' => Auth::user()])->withCategories($categories)->withCategory($category);
     }
 
     /**

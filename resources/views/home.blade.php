@@ -10,8 +10,8 @@
   <br>
   <div class="icon">
     <a href="https://www.instagram.com/akhdanfirdaus/" target="_blank" class="fa fa-instagram fa-lg text-center" aria-hidden="true"></a>
-    <a class="fa fa-facebook fa-lg text-center" aria-hidden="true"></a>
-    <a href="https://github.com/AkhdanMF" target="_blank" class="fa fa-github fa-lg text-center" aria-hidden="true"></a>
+    <a href="https://www.facebook.com/akhdan.firdaus" target="_blank" class="fa fa-facebook fa-lg text-center" aria-hidden="true"></a>
+    <a href="https://github.com/AkhdanFirdaus" target="_blank" class="fa fa-github fa-lg text-center" aria-hidden="true"></a>
   </div>
 </section>
 
@@ -26,7 +26,7 @@
     <div class="row">
       @foreach ($posts as $post)
         <div class="col-md-4" style="margin-bottom: 30px;">
-    		<div class="post">
+    		<div class="post thumbnail">
     			<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
     			<div class="caption">
     				<div class="text">

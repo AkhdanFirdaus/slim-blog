@@ -7,6 +7,7 @@ use App\User;
 use App\Post;
 use App\Album;
 use App\Category;
+use App\Tag;
 use Carbon\Carbon;
 use Auth;
 use Image;
@@ -34,7 +35,8 @@ class PagesController extends Controller
 
   public function profile()
   {
-    return view('auth.author.profile', ['user' => Auth::user()]);
+      $ups = User::withCount('posts')->get();
+      return view('auth.author.profile', ['user' => Auth::user()])->withUps($ups);
   }
 
   public function setProfile()
@@ -86,8 +88,9 @@ class PagesController extends Controller
   public function authorProfile($slug)
   {
   	$user = User::whereSlug($slug)->orderBy('created_at', 'desc')->firstorFail();
-    $categories = Category::all();
+    $categories = Category::withCount('posts')->get();
+    $tags = Tag::withCount('posts')->get();
 
-  	return view('auth.author.author-profile')->withUser($user)->withCategories($categories);
+  	return view('auth.author.author-profile')->withUser($user)->withCategories($categories)->withTags($tags);
   }
 }

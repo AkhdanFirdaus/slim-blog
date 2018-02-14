@@ -21,6 +21,11 @@
         </div>
     </section>
     <section>
+        <h2 class="text-center">Posts
+            @foreach ($ups as $key => $up)
+                <span class="badge">{{ $up->posts_count }}</span>
+            @endforeach
+            | <small><a href="/post/tulis" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> Tulis</a></small></h2>
         <table class="table table-hover">
             <tr>
                 <th>#</th>
@@ -34,16 +39,22 @@
                 <tr>
                     <th>{{ $index+1 }}</th>
                     <td><img src="/posts/post_cover/{{ $post->post_image }}" alt="" width="72px" height="54px"></td>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->category->name }}</td>
-                    <td>&nbsp;</td>
+                    <td><a href="/post/{{ $post->slug }}">{{ $post->title }}</a></td>
+                    <td><span class="label label-primary">{{ $post->category->name }}</span></td>
                     <td>
-                        {!! Form::open(['']) !!}
+                        @foreach ($post->tags as $key => $tag)
+                            <span class="label label-default">{{ $tag->name }}</span>
+                        @endforeach
+                    </td>
+                    <td>
+                        {{ Form::open(['url' => '/post/edit/'.$post->id, 'method' => 'get']) }}
                             {{Form::submit('Edit', ['class' => 'btn btn-primary btn-block'])}}
+                            {{ Form::token() }}
                         {!! Form::close() !!}
 
-                        {!! Form::open(['']) !!}
+                        {{ Form::open(['url' => '/post/hapus/'. $post->id, 'method' => 'delete']) }}
                             {{Form::submit('Hapus', ['class' => 'btn btn-danger btn-block'])}}
+                            {{ Form::token() }}
                         {!! Form::close() !!}
                     </td>
                 </tr>
@@ -51,17 +62,5 @@
         </table>
     </section>
 </div>
-<section id="footer">
-    <footer class="text-center row" >
-        <div class="col-md-4 col-md-offset-4">
-            <p>created with <i class="fa fa-heart"></i> by AkhdanFirdaus</p>
-        </div>
-        <div class="col-md-2 col-md-offset-2">
-            <div class="side">
-                <a onclick="history.go(-1)" class="btn btn-primary"><span class="fa fa-chevron-left"></span></a>
-                <a href="/" class="btn btn-primary"><span class="fa fa-home"></span></a>
-            </div>
-        </div>
-    </footer>
-</section>
+@include('inc.footer')
 @endsection

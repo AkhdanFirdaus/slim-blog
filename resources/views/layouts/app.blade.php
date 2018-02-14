@@ -7,9 +7,9 @@
 
     <title>{{ config('blog.title') }}</title>
 
-    <link rel="stylesheet" href="{{'/css/app.css'}}">
-    <link rel="stylesheet" href="{{'/css/authstyle.css'}}">
-    <link rel="stylesheet" href="{{'/css/font-awesome.min.css'}}">
+    {!! Html::style('css/app.css') !!}
+    {!! Html::style('css/authstyle.css') !!}
+    {!! Html::style('css/font-awesome.min.css') !!}
 
 </head>
 <body id="page-top">

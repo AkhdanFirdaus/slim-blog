@@ -1,8 +1,8 @@
 <div class="navbar-fixed-bottom text-right container-fluid navigasi">
     @if (Request::is('post/tulis'))
-        <a class="btn btn-primary" onclick="history.go(-1)"><span class="fa fa-arrow-left"></span> Kembali</a>
+        <a class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-arrow-left"></i> Kembali</a>
     @endif
-    <a href="#page-top" class="btn btn-primary"><span class="fa fa-chevron-up"></span></a>
+    <a href="#page-top" class="btn btn-primary"><i class="fa fa-chevron-up"></i></a>
     <button type="button" id="sidebarCollapse" class="btn btn-primary">Toggle Sidebar</button>
 </div>
 <div class="text-center navbar-fixed-left">
@@ -18,27 +18,29 @@
             <div class="dropdown">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <h2>Guest</h2>
-                    <span class="caret"></span>
+                    <i class="caret"></i>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#loginModal"><span class="fa fa-sign-in"></span> Login</a>
-                    <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#registerModal"><span class="fa fa-address-book"></span> Register</a></li>
+                    <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in"></i> Login</a>
+                    <li><a style="color: #333;" type="button" data-toggle="modal" data-target="#registerModal"><i class="fa fa-address-book"></i> Register</a></li>
                 </ul>
             </div>
         @else
             <div class="dropdown">
                 <div class="dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <h2>{{ Auth::user()->name }}</h2>
-                    <span class="caret"></span>
+                    <i class="caret"></i>
                 </div>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><a style="color: #333;" href="/profile"><span class="fa fa-user-circle"></span> Profile</a></li>
-                    <li><a style="color: #333;" href="/profile/setting"><span class="fa fa-edit"></span> Setting</a></li>
+                    <li><a href="/post/tulis">Tulis</a></li>
+                    <li><a href="{{ route('categories.index') }}">Kategori</a></li>
+                    <li><a href="{{ route('tags.index') }}">Tag</a></li>
                     <li role="separator" class="divider"></li>
+                    <li><a href="/profile"><i class="fa fa-user-circle"></i> Profile</a></li>
+                    <li><a href="/profile/setting"><i class="fa fa-edit"></i> Setting</a></li>
                     <li>
-                        <span class="fa fa-sign-out"></span>
-                        <a style="color: #333;" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out"></i> Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
@@ -52,11 +54,8 @@
         {{-- sidebar link --}}
         <div class="components">
             <br>
-            @auth ('web')
-                <a href="/post/tulis">Tulis</a>
-                <a href="{{ route('categories.index') }}">Kategori</a>
-            @endauth
-                @if (Request::is('/'))
+
+            @if (Request::is('/'))
                 <a href="/#post">Post</a>
                 <a href="/#gallery">Gallery</a>
                 <a href="/#about">About</a>
@@ -75,7 +74,7 @@
     <div class="navbar-fixed-top text-right container-fluid navigasi">
         <div class="pull-right">
             <button type="button" id="searchCollapse" class="btn btn-primary">
-                <span class="fa fa-search"></span>
+                <i class="fa fa-search"></i>
             </button>
         </div>
         <div id="search">

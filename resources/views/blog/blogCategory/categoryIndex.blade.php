@@ -4,23 +4,25 @@
 
 @section('blogcontent')
 <div class="container">
-@if (Request::is('post/categories'))
+@if (Request::is('categories'))
     @auth ('web')
     <div class="row">
         <div class="col-md-9">
-            <h1>Categories</h1>
+            <h1>Categories <small>{{ $categories->count() }} category</small></h1>
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Jumlah Post</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $key => $category)
                         <tr>
                             <th>{{ $category->id }}</th>
-                            <td><a href="/post/categories/{{ $category->slug }}" class="label label-primary">{{ $category->name }}</a></td>
+                            <td><a href="categories/{{ $category->slug }}" class="label label-primary">{{ $category->name }}</a></td>
+                            <td>{{ $category->posts_count }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -45,11 +47,11 @@
 @else
     <div class="row">
         <div class="col-md-9">
-            <h2>Kategori <small></small><label for="" class="label label-primary">{{ $categories->name }}</label></small></h2>
+            <h2>Kategori {{ $categories->name }} <small>{{$categories->posts()->count() }} Posts</small></h2>
             <hr>
             @foreach ($categories->posts as $index => $post)
                 <div class="media">
-                  <div class="media-left media-middle">
+                  <div class="media-left">
                     <a href="/post/{{ $post->slug }}">
                       <img class="media-object" src="/posts/post_cover/{{ $post->post_image }}" alt="..." width="72px" height="72px">
                     </a>
@@ -57,6 +59,11 @@
                   <div class="media-body">
                     <h4 class="media-heading">{{ $post->title }}</h4>
                     <p><a href="/author/{{ $post->authors['slug'] }}">{{ $post->authors['name'] }}</a> - <em>({{ $post->created_at->format('M jS Y') }})</em></p>
+                    <p>
+                        @foreach ($post->tags as $key => $tag)
+                            <span class="label label-default">{{ $tag->name }}</span>
+                        @endforeach
+                    </p>
                   </div>
                 </div>
             @endforeach
@@ -67,7 +74,7 @@
                 Kategori lainnya
               </a>
               @foreach ($category as $key => $cats)
-                  <a href="/post/categories/{{ $cats->slug }}" class="list-group-item">{{ $cats->name }}</a>
+                  <a href="/categories/{{ $cats->slug }}" class="list-group-item">{{ $cats->name }} <span class="badge">{{ $cats->posts_count }}</span></a>
               @endforeach
             </div>
         </div>

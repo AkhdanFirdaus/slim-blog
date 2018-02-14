@@ -44,14 +44,13 @@ a, a:hover, a:focus{
   background-color: #16a085;
   padding: 40px;
 }
-#sidebar .components {
-
+#sidebar .components a{
+    color: #fff;
 }
 #sidebar a{
   padding: 10px;
   font-size: 1.1em;
   display: block;
-  color: #fff;
 }
 #sidebar a:hover{
   color: #7386D5;
@@ -81,7 +80,6 @@ a, a:hover, a:focus{
   margin-right: 5px;
   transition: all 0.3s;
 }
-
 
 /* wrapper konten */
 #wrapper2{
@@ -227,16 +225,4 @@ hr.star.star-light{
 }
 .info{
   margin-left: -60px;
-}
-
-/* footer */
-#footer{
-	margin-top: 20px;
-	background-color: #2C3E50;
-	color: #fff;
-	padding: 20px;
-}
-
-#footer span{
-	color: #C54641;
 }

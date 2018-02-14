@@ -1,4 +1,5 @@
 @extends('layouts.appblog')
+{!! Html::style('css/select2.min.css') !!}
 
 @section('blogcontent')
 <div class="container">
@@ -18,7 +19,12 @@
 
 	<div class="form-group">
 		{{Form::label('category_id', 'Categories')}}
-		{!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}﻿
+		{!! Form::select('category_id', $categories, null, ['class' => 'form-control select2-single']) !!}﻿
+	</div>
+
+	<div class="form-group">
+		{{Form::label('tags', 'Tags')}}
+		{!! Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}﻿
 	</div>
 
 	<div class="form-group">
@@ -33,13 +39,16 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+{!! Html::script('js/select2.min.js') !!}
+{!! Html::script('ckeditor/ckeditor.js') !!}
 <script>
- var editor = document.getElementById("editor");
+	var editor = document.getElementById("editor");
 	 CKEDITOR.replace(editor,{
 	 language:'en-gb'
- });
- CKEDITOR.config.allowedContent = true;
+	});
+	CKEDITOR.config.allowedContent = true;
+
+	$('.select2-single').select2();
+	$('.select2-multi').select2();
 </script>
 @endsection

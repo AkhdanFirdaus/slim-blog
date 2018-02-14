@@ -31,7 +31,7 @@
 				</div><div class="row">
 				@endif
 			<div class="col-md-4" style="margin-bottom: 30px;">
-				<div class="post">
+				<div class="post thumbnail">
 					<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
 					<div class="caption">
 						<strong><h3><a href="/post/{{$post->slug}}">{{ $post->title }}</a></h3></strong>

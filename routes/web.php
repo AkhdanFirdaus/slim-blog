@@ -18,7 +18,11 @@ route::group(['prefix' => '/'], function(){
 
   Route::get('/', 'PagesController@beranda')->name('beranda');
 
-  Route::get('/author/{slug}', 'PagesController@authorProfile');
+  Route::get('/author/{slug}', 'PagesController@authorProfile')->name('author.show');
+
+  Route::resource('/categories', 'CategoryController', ['except' => 'create']);
+
+  Route::resource('/tags', 'TagController', ['except' => 'create']);
 
   route::group(['middleware' => 'auth'], function(){
 
@@ -39,8 +43,6 @@ Route::group(['prefix' => '/post'], function(){
 
   Route::get('/', 'BlogController@blogIndex');
 
-  Route::resource('/categories', 'CategoryController', ['except' => 'create']);
-
   Route::group(['middleware' => 'auth'], function(){
 
       Route::get('/tulis', 'BlogController@ngepost');
@@ -55,7 +57,7 @@ Route::group(['prefix' => '/post'], function(){
 
   });
 
-  Route::get('/{slug}', 'BlogController@showPost');
+  Route::get('/{slug}', 'BlogController@showPost')->name('post.show');
 
   Route::post('/search', 'BlogController@search');
 
