@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\Post;
 use Session;
+use Auth;
 
 class CommentController extends Controller
 {
@@ -37,17 +38,31 @@ class CommentController extends Controller
      */
     public function store(Request $request, $slug)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'email'  => 'required|email|max:255',
-            'comment'  => 'required|min:10|max:2000'
-        ]);
+        if (Auth::check()) {
+            $this->validate($request, [
+                'comment'  => 'required|min:10|max:2000'
+            ]);
+        }
+        else{
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'email'  => 'required|email|max:255',
+                'comment'  => 'required|min:10|max:2000'
+            ]);
+        }
 
-        $post = Post::find($slug);
+        $post = Post::whereSlug($slug)->firstorFail();
 
         $comment = new Comment();
-        $comment->name = $request->name;
-        $comment->email = $request->email;
+
+        if (Auth::check()) {
+            $comment->name = $request->user()->name;
+            $comment->email = $request->user()->email;
+        }
+        else{
+            $comment->name = $request->name;
+            $comment->email = $request->email;
+        }
         $comment->comment = $request->comment;
         $comment->approved = true;
         $comment->post_id = $post->id;
@@ -55,9 +70,9 @@ class CommentController extends Controller
 
         $comment->save();
 
-        Session::flash('succes', 'Comment was added');
+        Session::flash('success', 'Comment was added');
 
-        return redirect()->route('post.show', $post->slug);
+        return redirect()->back();
     }
 
     /**
@@ -102,6 +117,12 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+
+        $comment->delete();
+
+        Session::flash('succes', 'Komentar telah dihapus');
+
+        return redirect()->back();
     }
 }

@@ -2,8 +2,6 @@
 
 @section('homecontent')
 
-@include('inc.judul')
-
 <div class="container">
     @include('inc.pesan')
 </div>

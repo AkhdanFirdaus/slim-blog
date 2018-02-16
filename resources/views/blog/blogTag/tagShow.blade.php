@@ -3,51 +3,54 @@
 @section('title', "| $tag->name Tag")
 
 @section('blogcontent')
+<div class="tagshow"></div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <h1>Tag {{ $tag->name }} <small>{{ $tag->posts()->count() }} Posts</small></h1>
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="card" style="padding: 20px;">
+              <div class="cardcapt text-center">
+                <h1>
+                    <span class="label label-default">Tag {{ $tag->name }}</span>
+                    <br>
+                    <small>{{ $tag->posts()->count() }} Posts</small>
+                </h1>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, reiciendis.</p>
+                @auth ('web')
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editTag">Edit Tag</button>
+                            @include('blog.blogTag.tagEdit')
+                        </div>
+                        <div class="col-md-6">
+                            {!! Form::open(['route' => ['tags.destroy', $tag->slug], 'method' => 'DELETE']) !!}
+                                {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block'])}}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                @endauth
+              </div>
+            </div>
         </div>
-        @auth ('web')
-            <div class="col-md-offset-2 col-md-1">
-                <a href="{{ route('tags.edit', $tag->slug) }}" class="btn btn-primary btn-block" style="margin-top: 20px;">Edit</a>
-            </div>
-            <div class="col-md-1">
-                {!! Form::open(['route' => ['tags.destroy', $tag->slug], 'method' => 'DELETE']) !!}
-                    {{Form::submit('Delete', ['class' => 'btn btn-danger btn-block', 'style' => 'margin-top: 20px;'])}}
-                {!! Form::close() !!}
-            </div>
-        @endauth
     </div>
+    <hr>
     <div class="row">
-        <div class="col-md-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Tags</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($tag->posts as $index => $post)
-                        <tr>
-                            <th>{{ $index+1 }}</th>
-                            <td>{{ $post->title }}</td>
-                            <td><span class="label label-primary">{{ $post->Category->name }}</span></td>
-                            <td>
-                                @foreach ($post->tags as $key => $tag)
-                                    <span class="label label-default">{{ $tag->name }}</span>
-                                @endforeach
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+        @foreach ($tag->posts as $index => $post)
+            <div class="col-md-4">
+                <div class="post">
+                    <a href="{{ $post->slug }}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
+                    <div class="caption">
+                        <div class="text">
+                            <h3><a href="{{ $post->slug }}">{{ $post->title }}</a></h3>
+                            <p>{!! str_limit($post->content, 50) !!}</p>
+                            <hr>
+                            <p><a href="/author/{{ $post->authors['slug'] }} "><strong>{{ $post->authors['name'] }} </strong></a> - {{ $post->created_at->format('M jS Y g:ia') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection

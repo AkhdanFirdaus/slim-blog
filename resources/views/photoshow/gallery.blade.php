@@ -7,7 +7,7 @@
     <hr>
       <div class="row">
       @php
-        $index = 0;
+        $i = 0;
       @endphp
         @foreach ($albums as $count => $album)
           @if ($count % 3 == 0)
@@ -17,17 +17,17 @@
                 <div class="panel panel-default">
                     <div class="panel-image">
                         <img src="/uploads/album_covers/{{$album->cover_image}}" class="panel-image-preview" />
-                        <label for="toggle-{{$index+1}}"></label>
+                        <label for="toggle-{{$i}}"></label>
                     </div>
-                    <input type="checkbox" id="toggle-{{$index+1}}" class="panel-image-toggle">
+                    <input type="checkbox" id="toggle-{{$i}}" class="panel-image-toggle">
                     <div class="panel-body">
-                        <a href="/gallery/{{$album->id}}">
+                        <a href="{{ route('gal.show', $album->id) }}">
                           <h4>{{$album->name}}</h4>
                         </a>
                         <p>{{$album->description}}</p>
                         @auth ('web')
                           <div>
-                            {{ Form::open(['url' => '/gallery/hapus/'. $album->id, 'method' => 'delete']) }}
+                            {{ Form::open(['route' => ['gal.destroy', $album->id], 'method' => 'DELETE']) }}
                               <button type="submit" class="label label-danger">Hapus</button>
                               {{ Form::token() }}
                             {{ Form::close() }}
@@ -42,10 +42,10 @@
                     </div>
                 </div>
             </div>
+            @php
+              $i++;
+            @endphp
         @endforeach
-        @php
-          $index++;
-        @endphp
       </div>
   @else
     <div class="alert alert-info text-center Kosong">

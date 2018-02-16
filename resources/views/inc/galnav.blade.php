@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="/">Home</a></li>
       @auth ('web')
-        <li><a href="/gallery/create">Create Album</a></li>
+        <li><a href="{{ route('gal.create') }}">Create Album</a></li>
       @endauth
     </ul>
   </div>

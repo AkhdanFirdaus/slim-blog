@@ -41,9 +41,12 @@ route::group(['prefix' => '/'], function(){
 // Route untuk blog
 Route::group(['prefix' => '/post'], function(){
 
-  Route::get('/', 'BlogController@blogIndex');
+  Route::get('/', 'BlogController@blogIndex')->name('post.index');
 
+  // Komentar
   Route::post('comments/{slug}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+
+  Route::delete('comments/{slug}', ['uses' => 'CommentController@destroy', 'as' => 'comments.destroy']);
 
   Route::group(['middleware' => 'auth'], function(){
 
@@ -68,26 +71,26 @@ Route::group(['prefix' => '/post'], function(){
 // Route untuk gallery
 Route::group(['prefix' => '/gallery'], function(){
 
-    Route::get('/', 'AlbumsController@gallery');
-
-    Route::get('/{id}', 'AlbumsController@show');
+    Route::get('/', 'AlbumsController@gallery')->name('gal.index');
 
     route::group(['middleware' => 'auth'], function(){
 
-      Route::get('/create', 'AlbumsController@create');
+      Route::get('/create', 'AlbumsController@create')->name('gal.create');
 
-      Route::post('/create', 'AlbumsController@store');
+      Route::post('/create', 'AlbumsController@store')->name('gal.store');
 
-      Route::delete('/hapus/{id}', 'AlbumsController@delAlbum');
+      Route::delete('/hapus/{id}', 'AlbumsController@delAlbum')->name('gal.destroy');
 
     });
+
+    Route::get('/{id}', 'AlbumsController@show')->name('gal.show');
 });
 
 // Route untuk foto
 Route::group(['prefix' => '/gallery/photos', 'middleware' => 'auth'], function(){
 
-  Route::get('/create/{id}', 'PhotosController@create');
+  Route::get('/create/{id}', 'PhotosController@create')->name('photo.create');
 
-  Route::post('/create', 'PhotosController@store');
+  Route::post('/create', 'PhotosController@store')->name('photo.store');
 
 });

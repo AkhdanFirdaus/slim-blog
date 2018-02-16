@@ -7,6 +7,7 @@ use App\Album;
 use Auth;
 use Image;
 use File;
+use Session;
 
 class AlbumsController extends Controller
 {
@@ -47,9 +48,9 @@ class AlbumsController extends Controller
 
     public function show($id)
     {
-      $album = Album::with('Photos')->find($id);
+        $album = Album::with('photos')->find($id);
 
-      return view('photoshow.photos.photo', ['user' => Auth::user()])->with('album', $album);
+        return view('photoshow.photos.photo', ['user' => Auth::user()])->with('album', $album);
     }
 
     public function delAlbum($id)

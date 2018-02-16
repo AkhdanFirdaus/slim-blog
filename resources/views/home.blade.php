@@ -26,7 +26,7 @@
     <div class="row">
       @foreach ($posts as $post)
         <div class="col-md-4" style="margin-bottom: 30px;">
-    		<div class="post thumbnail">
+    		<div class="post card">
     			<a href="/post/{{$post->slug}}"><img src="/posts/post_cover/{{$post->post_image}}" alt=""></a>
     			<div class="caption">
     				<div class="text">
@@ -47,8 +47,10 @@
 		</div>
       @endforeach
     </div>
-    <div class="text-center">
-      <a href="/post" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/post" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
+        </div>
     </div>
   </div>
 </section>
@@ -65,7 +67,7 @@
             @foreach ($albums as $key => $album)
                 <div class="col-md-4">
                     <div class="post">
-            			<a href="/gallery/{{$album->id}}}"><img src="/uploads/album_covers/{{$album->cover_image}}" alt=""></a>
+            			<a href="/gallery/{{$album->id}}"><img src="/uploads/album_covers/{{$album->cover_image}}" alt=""></a>
             			<div class="caption">
             				<div class="text">
             					<strong><h3><a href="/gallery/{{$album->id}}">{{$album->name}}</a></h3></strong>
@@ -83,8 +85,10 @@
             </div>
         @endif
     </div>
-    <div class="col-md-4 col-md-offset-4 text-center">
-        <a href="/gallery" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <a href="/gallery" class="btn btn-primary btn-block">Lihat Selengkapnya</a>
+        </div>
     </div>
 </section>
 

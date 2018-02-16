@@ -10,6 +10,6 @@ class Photo extends Model
 
     public function album()
     {
-      return $this->belogsTo('App\Album');
+      return $this->belongsTo('App\Album');
     }
 }

@@ -1,6 +1,8 @@
 @extends('layouts.appblog')
 
-@section('blogcontent')
+@include('inc.judul')
+
+@section('blogcontent')	
 	<div class="container">
 			<h5>
 				@if (Request::is('post/search'))

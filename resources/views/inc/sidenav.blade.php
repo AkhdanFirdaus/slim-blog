@@ -1,9 +1,7 @@
 <div class="navbar-fixed-bottom text-right container-fluid navigasi">
-    @if (Request::is('post/tulis'))
-        <a class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-arrow-left"></i> Kembali</a>
-    @endif
+    <a class="btn btn-primary" onclick="history.go(-1)"><i class="fa fa-chevron-left"></i></a>
     <a href="#page-top" class="btn btn-primary"><i class="fa fa-chevron-up"></i></a>
-    <button type="button" id="sidebarCollapse" class="btn btn-primary">Toggle Sidebar</button>
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">Navigation</button>
 </div>
 <div class="text-center navbar-fixed-left">
     <nav id="sidebar">

@@ -4,7 +4,7 @@
 <div id="photos">
   <a href="/gallery" class="btn btn-default">Back</a>
   @auth ('web')
-    <a href="/gallery/photos/create/{{$album->id}}" class="btn btn-primary">Upload Photo To Album</a>
+    <a href="{{ route('photo.create', $album->id)}}" class="btn btn-primary">Upload Photo To Album</a>
   @endauth
   <hr>
   @if (count($album->photos) > 0)
@@ -12,7 +12,7 @@
     <hr>
     <div class="row">
       @php
-        $index = 0;
+        $i = 1;
       @endphp
       @foreach ($album->photos as $count => $photo)
         @if ($count % 3 == 0)
@@ -22,9 +22,9 @@
               <div class="panel panel-default">
                   <div class="panel-image">
                       <img src="/uploads/photos/{{$photo->photo}}" class="panel-image-preview" />
-                      <label for="toggle-{{$index+1}}"></label>
+                      <label for="toggle-{{$i}}"></label>
                   </div>
-                  <input type="checkbox" id="toggle-{{$index+1}}" class="panel-image-toggle">
+                  <input type="checkbox" id="toggle-{{$i}}" class="panel-image-toggle">
                   <div class="panel-body">
                       <h4>{{$photo->title}}</h4>
                       <p>{{$photo->description}}</p>
@@ -37,10 +37,10 @@
                   </div>
               </div>
           </div>
+          @php
+            $i++;
+          @endphp
       @endforeach
-      @php
-        $index++;
-      @endphp
     </div>
   @else
     <div class="alert alert-info text-center kosong">
